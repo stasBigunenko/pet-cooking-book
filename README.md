@@ -10,17 +10,22 @@ should be installed the json-server package with the following command:
 
 ### `npm i json-server`
 
-# npm i axios
+
+# Promise based HTTP client for the browser
 
 should be installed to make a requests to the database.
 
+### `npm i axios`
+
+
 # After all installation:
 
-You should start the server on port 3004 in the other terminal window with the following command:
+You should start the server on port 3004 in the  terminal window with the following command:
 ### `json-server --watch db.json --port 3004`
 
 Will launch the server on port 3004: json-server --watch db.json --port 3004
 
+To start a site you should enter the following command in the other terminal window:
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
