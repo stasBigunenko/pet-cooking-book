@@ -1,6 +1,6 @@
 
 .card {
-    height: 250px;
+    height: auto;
     width: 100%;
     display: flex;
     padding: 15px;
@@ -13,17 +13,18 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.card .card__content {
+.card__content {
     justify-content: space-between ;
+    padding: 15px;
 }
 
-.card .card__img {
+.card__img {
     height: 220px;
     width: 270px;
     justify-content: center;
     /*overflow: hidden;*/
 }
-.card .card__img:hover {
+.card__img:hover {
     transform: scale(1.2);
     transition-duration: 0.5s;
 }
