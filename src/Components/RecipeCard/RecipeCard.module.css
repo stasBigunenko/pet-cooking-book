@@ -18,10 +18,10 @@
 }
 
 .card .card__img {
-    height: auto;
-    width: 300px;
+    height: 220px;
+    width: 270px;
     justify-content: center;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .card .card__img:hover {
     transform: scale(1.2);
