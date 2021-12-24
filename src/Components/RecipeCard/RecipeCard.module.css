@@ -6,8 +6,6 @@
     padding: 15px;
     border: 2px solid teal;
     margin-top: 15px;
-    /*align-items: center;*/
-    overflow: hidden;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -23,8 +21,31 @@
     height: auto;
     width: 300px;
     justify-content: center;
+    overflow: hidden;
+}
+.card .card__img:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
 }
 
-/*.card__btn {*/
-/*    background-color: red;*/
-/*}*/
+.card__btn {
+    margin-top: 5px;
+    padding: 15px 15px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border-radius: 1px;
+    cursor: pointer;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.card__btn:hover {
+    border: 2px solid royalblue;
+    background-color: lightblue;
+    color: royalblue;
+    transition-duration: 0.5s;
+}
