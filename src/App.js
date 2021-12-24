@@ -3,7 +3,7 @@ import Title from "./Components/Title/Title.js";
 import * as React from "react";
 import MyButton from "./Components/MyButton/MyButton.js";
 import MainText from "./Components/MainText/MainText.js";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import DishList from "./Components/DishList/DishList.js";
 import InputMy from "./Components/Input/InputMy.js";
 import DishesService from "./API/DischesService.js";
@@ -11,6 +11,11 @@ import DishesService from "./API/DischesService.js";
 function App() {
 
     const [dishes, setDishes] = useState([])
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const searchedDishes = useMemo(() => {
+        return dishes.filter(dish => dish.title.toLowerCase().includes(searchQuery.toLowerCase()))
+    }, [searchQuery, dishes])
 
     useEffect( () => {
         fetchDishes()
@@ -29,9 +34,11 @@ function App() {
         </MyButton>
         <MainText/>
           <InputMy
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
               placeholder="Поиск..."
           />
-        <DishList dishes={dishes} />
+        <DishList dishes={searchedDishes} />
       </div>
   );
 }
