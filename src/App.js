@@ -6,8 +6,8 @@ import MainText from "./Components/MainText/MainText.js";
 import {useEffect, useState} from "react";
 import DishList from "./Components/DishList/DishList.js";
 import InputMy from "./Components/Input/InputMy.js";
-import axios from "axios";
 import DishesService from "./API/DischesService.js";
+import Gallery from "./Components/Gallery/Carusel.js";
 
 
 function App() {

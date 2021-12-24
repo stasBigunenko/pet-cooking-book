@@ -3,20 +3,39 @@ import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import MyButton from "../MyButton/MyButton.js";
 import DishesService from "../../API/DischesService.js";
+import Gallery from "../Gallery/Carusel.js";
 
 const RecipeCard = ({dish}) => {
 
     const [modalActive, setModalActive] = useState(false)
     const [dishById, setDishById] = useState({})
+    const [isHover, setIsHover] = useState(false)
+    const [photosById, setPhotosById] = useState([])
 
     async function fetchDishById() {
         const dishById = await DishesService.getDishByID(dish.id)
         setDishById(dishById)
     }
 
+    async function fetchPhotosById() {
+        const photosById = await DishesService.getPhotosById(dish.id)
+        setPhotosById(photosById)
+    }
+
     return (
         <div className={classes.card}>
-            <img className={classes.card__img} src={require("../../Images/"+dish.url)}/>
+
+            <button
+                onClick={() => {
+                    setIsHover(true)
+                    fetchPhotosById()
+                }}>
+                    <img className={classes.card__img} src={require("../../Images/"+dish.url)} alt="" />
+            </button>
+            <MyModal active={isHover} setActive={setIsHover} >
+                <Gallery photos={photosById} id ={dish.id}/>
+            </MyModal>
+
             <div className={classes.card__content}>
                 <strong>{dish.title}</strong>
                 <li>
