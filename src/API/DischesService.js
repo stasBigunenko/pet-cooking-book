@@ -10,4 +10,10 @@ export default class DishesService {
         const response = await axios.get('http://localhost:3004/dish/'+id)
         return response.data
     }
+
+    static async getPhotosById(id) {
+        const response = await axios.get('http://localhost:3004/photo/'+id)
+        const photos = response.data.pict
+        return photos
+    }
 }

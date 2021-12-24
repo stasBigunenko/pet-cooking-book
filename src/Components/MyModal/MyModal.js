@@ -5,8 +5,7 @@ const MyModal = ({active, setActive, children}) => {
 
     const rootClasses = [classes.modal]
     const rootContClasses = [classes.modal__content]
-    console.log(active)
-    console.log(setActive)
+
     if (active) {
         rootClasses.push(classes.active)
         rootContClasses.push(classes.active)
