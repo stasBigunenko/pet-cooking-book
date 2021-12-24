@@ -48,13 +48,13 @@ const RecipeCard = ({dish}) => {
                 <p>
                     {dish.description}
                 </p>
-                <MyButton
+                <button
                     className={classes.card__btn}
                     onClick={() => {
                         setModalActive(true)
                         fetchDishById()
                     }}
-                >Полный рецепт</MyButton>
+                >Полный рецепт</button>
                 <MyModal active={modalActive} setActive={setModalActive} >
                     <strong>{dishById.title}</strong>
                     <p>{dishById.receipt}</p>

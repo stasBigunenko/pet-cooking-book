@@ -7,8 +7,6 @@ import {useEffect, useState} from "react";
 import DishList from "./Components/DishList/DishList.js";
 import InputMy from "./Components/Input/InputMy.js";
 import DishesService from "./API/DischesService.js";
-import Gallery from "./Components/Gallery/Carusel.js";
-
 
 function App() {
 
@@ -26,7 +24,7 @@ function App() {
   return (
       <div>
         <Title/>
-        <MyButton style={{width: '100%'}}>
+        <MyButton style={{width: '100%'} }>
             Login
         </MyButton>
         <MainText/>
