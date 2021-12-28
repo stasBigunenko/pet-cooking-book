@@ -16,42 +16,41 @@ const RecipeCard = ({dish}) => {
     }
 
     async function fetchPhotosById() {
-        const photosById = await DishesService.getPhotosById(dish.id)
+        const photosById = await DishesService.getPhotosByID(dish.id)
         setPhotosById(photosById)
     }
 
-    return (
-        <div className={classes.card}>
+    return <div className={classes.card}>
 
-            <img className={classes.card__img} src={require("../../Images/"+dish.url)} alt="" />
-            <div className={classes.card__content}>
-                <strong>{dish.title}</strong>
-                <li>
-                    Время приготовления - {dish.cookingTime} мин.
-                </li>
-                <li>
-                    Количество каллорий - {dish.callories} ккал.
-                </li>
-                <strong>Описание</strong>
-                <p>
-                    {dish.description}
-                </p>
-                <button
-                    className={classes.card__btn}
-                    onClick={() => {
-                        setModalActive(true)
-                        fetchDishById()
-                        fetchPhotosById()
-                    }}
-                >Полный рецепт</button>
-                <MyModal active={modalActive} setActive={setModalActive} >
-                    <strong>{dishById.title}</strong>
-                    <p>{dishById.receipt}</p>
-                    <Gallery photos={photosById} id ={dish.id}/>
-                </MyModal>
-            </div>
+
+        <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
+        <div className={classes.card__content}>
+            <strong>{dish.title}</strong>
+            <li>
+                Время приготовления - {dish.cookingTime} мин.
+            </li>
+            <li>
+                Количество каллорий - {dish.callories} ккал.
+            </li>
+            <strong>Описание</strong>
+            <p>
+                {dish.description}
+            </p>
+            <button
+                className={classes.card__btn}
+                onClick={() => {
+                    setModalActive(true)
+                    fetchDishById()
+                    fetchPhotosById()
+                }}
+            >Полный рецепт</button>
+            <MyModal active={modalActive} setActive={setModalActive} >
+                <strong>{dishById.title}</strong>
+                <p>{dishById.receipt}</p>
+                {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
+            </MyModal>
         </div>
-    );
+    </div>;
 };
 
 export default RecipeCard;

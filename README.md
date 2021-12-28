@@ -2,21 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Before starting:
+# Before starting should be installed the following:
 
-# npm-js server
+## npm-js server
 
-should be installed the json-server package with the following command:
+the json-server package:
 
 ### `npm i json-server`
 
+## Promise based HTTP client for the browser:
 
-# Promise based HTTP client for the browser
-
-should be installed to make a requests to the database.
+http client:
 
 ### `npm i axios`
 
+## Photo-gallery carousel:
+
+### npm install react-grid-carousel --save
 
 # After all installation:
 

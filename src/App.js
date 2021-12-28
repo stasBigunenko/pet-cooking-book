@@ -7,6 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 import DishList from "./Components/DishList/DishList.js";
 import InputMy from "./Components/Input/InputMy.js";
 import DishesService from "./API/DischesService.js";
+import AddReceipt from "./Components/AddReceipt/AddReceipt.js";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Поиск..."
           />
+        <AddReceipt dishes={dishes} setDishes={setDishes}/>
         <DishList dishes={searchedDishes} />
       </div>
   );
