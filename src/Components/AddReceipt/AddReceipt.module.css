@@ -1,0 +1,21 @@
+.addRec__btn {
+    margin-top: 5px;
+    padding: 15px 15px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border-radius: 1px;
+    cursor: pointer;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.addRec__btn:hover {
+    border: 2px solid royalblue;
+    background-color: lightblue;
+    color: royalblue;
+    transition-duration: 0.5s;
+}
