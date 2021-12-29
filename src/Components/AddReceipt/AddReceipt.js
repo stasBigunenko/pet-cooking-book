@@ -19,19 +19,31 @@ const AddReceipt = ({dishes, setDishes}) => {
         receipt: ''
     })
 
-    function addNewReceipt(dish, dishes) {
+    async function addNewReceipt(dish, dishes) {
         DishesService.createNewDish(dish, dishes)
     }
 
-    const addReceipt = () => {
+    // sleep time expects milliseconds
+    function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    const addReceipt = (e) => {
+
         addNewReceipt(dish, dishes)
-        setDish({
-            title: '',
-            cookingTime: '',
-            callories: '',
-            description: '',
-            receipt: ''
+        e.preventDefault()
+
+        sleep(500).then(() => {
+            setDish({
+                title: '',
+                cookingTime: '',
+                callories: '',
+                description: '',
+                receipt: ''
+            })
+            window.location.reload(false);
         })
+
     }
 
     return (
