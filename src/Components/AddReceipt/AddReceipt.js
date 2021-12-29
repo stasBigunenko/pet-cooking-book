@@ -7,7 +7,7 @@ import DishesService from "../../API/DischesService.js";
 import UploadForm from "../UploadForm/UploadForm.js";
 
 
-const AddReceipt = ({dishes, setDishes}) => {
+const AddReceipt = ({dishes}) => {
 
     const [modalAddReceipt, setModalAddReceipt] = useState(false)
 
