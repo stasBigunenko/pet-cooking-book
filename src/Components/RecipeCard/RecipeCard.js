@@ -4,7 +4,7 @@ import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
 import Gallery from "../Gallery/Carusel.js";
 
-const RecipeCard = ({dish}) => {
+const RecipeCard = ({dish, remove}) => {
 
     const [modalActive, setModalActive] = useState(false)
     const [dishById, setDishById] = useState({})
@@ -18,6 +18,10 @@ const RecipeCard = ({dish}) => {
     async function fetchPhotosById() {
         const photosById = await DishesService.getPhotosByID(dish.id)
         setPhotosById(photosById)
+    }
+
+    async function deleteDishById() {
+        await DishesService.deleteDishByID(dish.id)
     }
 
     return <div className={classes.card}>
@@ -49,6 +53,15 @@ const RecipeCard = ({dish}) => {
                 <p>{dishById.receipt}</p>
                 {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
             </MyModal>
+            <button
+                className={classes.card__btn2}
+                onClick={() => {
+                    remove(dish)
+                    deleteDishById()
+                }}
+            >
+                Удалить рецепт
+            </button>
         </div>
     </div>;
 };

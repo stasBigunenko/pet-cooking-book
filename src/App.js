@@ -27,6 +27,10 @@ function App() {
         setDishes(dishes)
     }
 
+    const removeDish = (dish) => {
+        setDishes(dishes.filter(d => d.id !== dish.id))
+    }
+
   return (
       <div>
         <Title/>
@@ -40,7 +44,7 @@ function App() {
               placeholder="Поиск..."
           />
         <AddReceipt dishes={dishes} setDishes={setDishes}/>
-        <DishList dishes={searchedDishes} />
+        <DishList remove={removeDish} dishes={searchedDishes} />
       </div>
   );
 }
