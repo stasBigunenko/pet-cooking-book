@@ -27,8 +27,14 @@ function App() {
         setDishes(dishes)
     }
 
-    const removeDish = (dish) => {
+    const removeReceipt = (dish) => {
         setDishes(dishes.filter(d => d.id !== dish.id))
+    }
+
+    const changeReceipt = (newReceipt) => {
+        const foundIndex = dishes.findIndex(d => d.id === newReceipt.id);
+        dishes[foundIndex] = newReceipt;
+        setDishes(dishes)
     }
 
   return (
@@ -44,7 +50,7 @@ function App() {
               placeholder="Поиск..."
           />
         <AddReceipt dishes={dishes} setDishes={setDishes}/>
-        <DishList remove={removeDish} dishes={searchedDishes} />
+        <DishList change={changeReceipt} remove={removeReceipt} dishes={searchedDishes} />
       </div>
   );
 }
