@@ -12,13 +12,11 @@ the json-server package:
 
 ## Promise based HTTP client for the browser:
 
-http client:
-
 ### `npm i axios`
 
 ## Photo-gallery carousel:
 
-### npm install react-grid-carousel --save
+### `npm install react-grid-carousel --save`
 
 # After all installation:
 

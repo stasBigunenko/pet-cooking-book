@@ -20,7 +20,6 @@ export default class DishesService {
             const photos = []
             return photos
         }
-
     }
 
     static async createNewDish(dish, dishes) {
