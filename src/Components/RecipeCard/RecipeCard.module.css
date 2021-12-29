@@ -50,3 +50,25 @@
     color: royalblue;
     transition-duration: 0.5s;
 }
+
+.card__btn2 {
+    margin-top: 5px;
+    padding: 15px 15px;
+    color: lightcoral;
+    font-size: 14px;
+    background: transparent;
+    border-radius: 1px;
+    cursor: pointer;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.card__btn2:hover {
+    border: 2px solid indianred;
+    background-color: lightcoral;
+    color: darkred;
+    transition-duration: 0.5s;
+}

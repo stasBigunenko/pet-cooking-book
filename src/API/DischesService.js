@@ -38,4 +38,10 @@ export default class DishesService {
             receipt: dish.receipt
         })
     }
+
+    static async deleteDishByID(id) {
+        await axios.delete('http://localhost:3004/dishes/' + id).then(() => {
+            axios.delete('http://localhost:3004/dish/' + id)
+        })
+    }
 }
