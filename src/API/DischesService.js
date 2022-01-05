@@ -37,6 +37,7 @@ export default class DishesService {
             title: dish.title,
             receipt: dish.receipt
         })
+        return dish
     }
 
     static async deleteDishByID(id) {
@@ -56,24 +57,69 @@ export default class DishesService {
             description: response1.data.description,
             url: response1.data.url,
             receipt: response2.data.receipt
-        }
+        };
     }
 
     static async putDishByID(changeDish) {
+        // return await axios.put('http://localhost:3004/dishes/' + changeDish.id, {
+        //     id: changeDish.id,
+        //     title: changeDish.title,
+        //     cookingTime: changeDish.cookingTime,
+        //     callories: changeDish.callories,
+        //     description: changeDish.description,
+        //     url: changeDish.url})
+        //     .then(() => {
+        //         axios.put('http://localhost:3004/dish/' + changeDish.id, {
+        //         id: changeDish.id,
+        //         title: changeDish.title,
+        //         receipt:changeDish.receipt
+        //     })
+        // })
+
+        // await axios.put('http://localhost:3004/dish/' + changeDish.id, {
+        //             id: changeDish.id,
+        //             title: changeDish.title,
+        //             receipt:changeDish.receipt
+        // })
+        // return await axios.all([
+        //     axios.put('http://localhost:3004/dishes/' + changeDish.id, {
+        //         id: changeDish.id,
+        //         title: changeDish.title,
+        //         cookingTime: changeDish.cookingTime,
+        //         callories: changeDish.callories,
+        //         description: changeDish.description,
+        //         url: changeDish.url}),
+        //     axios.put('http://localhost:3004/dish/' + changeDish.id, {
+        //                 id: changeDish.id,
+        //                 title: changeDish.title,
+        //                 receipt:changeDish.receipt
+        //     })
+        // ])
         axios.put('http://localhost:3004/dishes/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
             callories: changeDish.callories,
             description: changeDish.description,
-            url: changeDish.url})
-
-        axios.put('http://localhost:3004/dish/' + changeDish.id, {
-                    id: changeDish.id,
-                    title: changeDish.title,
-                    receipt:changeDish.receipt
+            url: changeDish.url
+        }).catch(function (error) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            }
         })
 
-        return await changeDish
+        axios.put('http://localhost:3004/dish/' + changeDish.id, {
+            id: changeDish.id,
+            title: changeDish.title,
+            receipt:changeDish.receipt
+        }).catch(function (error) {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            }
+        })
     }
 }
