@@ -34,7 +34,7 @@ export default class DishesService {
             id: dish.id,
             title: dish.title,
             cookingTime: dish.cookingTime,
-            callories: dish.callories,
+            calories: dish.calories,
             description: dish.description,
             url: "none.png"
         })
@@ -61,7 +61,7 @@ export default class DishesService {
             id: response1.data.id,
             title: response1.data.title,
             cookingTime: response1.data.cookingTime,
-            callories: response1.data.callories,
+            calories: response1.data.calories,
             description: response1.data.description,
             url: response1.data.url,
             receipt: response2.data.receipt
@@ -74,7 +74,7 @@ export default class DishesService {
             id: changeDish.id,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
-            callories: changeDish.callories,
+            calories: changeDish.calories,
             description: changeDish.description,
             url: changeDish.url
         })
@@ -87,7 +87,7 @@ export default class DishesService {
             id: changeDish.id,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
-            callories: changeDish.callories,
+            calories: changeDish.calories,
             description: changeDish.description,
             url: changeDish.url
         }

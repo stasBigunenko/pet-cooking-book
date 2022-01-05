@@ -59,7 +59,7 @@ const RecipeCard = ({dish, remove, change}) => {
             id: newDish.id,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
-            callories: newDish.callories,
+            calories: newDish.calories,
             description: newDish.description,
             url: newDish.url
         }
@@ -80,7 +80,7 @@ const RecipeCard = ({dish, remove, change}) => {
                 Время приготовления - {dish.cookingTime} мин.
             </li>
             <li>
-                Количество каллорий - {dish.callories} ккал.
+                Количество каллорий - {dish.calories} ккал.
             </li>
             <strong>Описание</strong>
             <p>
@@ -122,10 +122,10 @@ const RecipeCard = ({dish, remove, change}) => {
                         placeholder={dishChange.cookingTime}
                     />
                     <InputMy
-                        value={dishChange.callories}
-                        onChange={e => setDishChange({...dishChange, callories: e.target.value})}
+                        value={dishChange.calories}
+                        onChange={e => setDishChange({...dishChange, calories: e.target.value})}
                         type="text"
-                        placeholder={dishChange.callories}
+                        placeholder={dishChange.calories}
                     />
                     <InputMy
                         value={dishChange.description}

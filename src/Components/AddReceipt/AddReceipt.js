@@ -18,7 +18,7 @@ const AddReceipt = ({dishes, create}) => {
     const [dish, setDish] = useState({
         title: '',
         cookingTime: '',
-        callories: '',
+        calories: '',
         description: '',
         receipt: '',
     })
@@ -34,7 +34,7 @@ const AddReceipt = ({dishes, create}) => {
             id: newDish.id,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
-            callories: newDish.callories,
+            calories: newDish.calories,
             description: newDish.description,
             url: newDish.url
         }
@@ -46,7 +46,7 @@ const AddReceipt = ({dishes, create}) => {
         setDish({
             title: '',
             cookingTime: '',
-            callories: '',
+            calories: '',
             description: '',
             receipt: '',
         })
@@ -81,8 +81,8 @@ const AddReceipt = ({dishes, create}) => {
                         placeholder="Время приготовления (мин)"
                     />
                     <InputMy
-                        value={dish.callories}
-                        onChange={e => setDish({...dish, callories: e.target.value})}
+                        value={dish.calories}
+                        onChange={e => setDish({...dish, calories: e.target.value})}
                         type="text"
                         placeholder="Кол-во калорий (ккал)"
                     />
