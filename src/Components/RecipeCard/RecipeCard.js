@@ -48,19 +48,20 @@ const RecipeCard = ({dish, remove, change}) => {
         await DishesService.deleteDishByID(dish.id)
     }
 
-    //
-    const changeDishByID = (e) => {
+    // Function to change the receipt by id in db-s
+    async function changeDishByID (e) {
         // disable reloading of the page
         e.preventDefault()
         // created new variable to receive the data from the function
-        const newDish = DishesService.putDishByID(dishChange)
+        const newDish = await DishesService.putDishByID(dishChange)
         // add needed data to the new object
         const newReceipt = {
             id: newDish.id,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
             callories: newDish.callories,
-            description: newDish.description
+            description: newDish.description,
+            url: newDish.url
         }
         // Changed the state of the hook
         setUpdatedDish(newReceipt)
@@ -138,12 +139,10 @@ const RecipeCard = ({dish, remove, change}) => {
                         type="text"
                         placeholder={dishChange.receipt}
                     />
-                    {/*<UploadForm/>*/}
                     <MyButton
                         onClick={(e) =>{
                             changeDishByID(e)
                             change(updatedDish)
-                            setModal2Active(false)
                         }}
                     >
                         Отправить отредактированный рецепт в книгу рецептов
