@@ -5,10 +5,16 @@ import classes from "./AddReceipt.module.css";
 import InputMy from "../Input/InputMy.js";
 import DishesService from "../../API/DischesService.js";
 
+// Component that create new receipt
 const AddReceipt = ({dishes, create}) => {
 
+    // Hook to control the state of the modal window
     const [modalAddReceipt, setModalAddReceipt] = useState(false)
+
+    // Hook to control the state of the new receipt
     const [newReceipt, setNewReceipt] = useState({})
+
+    // Hook to control the state of the data in the modal window
     const [dish, setDish] = useState({
         title: '',
         cookingTime: '',
@@ -17,9 +23,13 @@ const AddReceipt = ({dishes, create}) => {
         receipt: '',
     })
 
+    // Function to add a new receipt
     async function addNewReceipt(e) {
+        // disable reloading of the page
         e.preventDefault()
+        // created new variable to receive the data from the function
         const newDish = await DishesService.createNewDish(dish, dishes)
+        // add needed data to the new object
         const newReceipt = {
             id: newDish.id,
             title: newDish.title,
@@ -28,8 +38,11 @@ const AddReceipt = ({dishes, create}) => {
             description: newDish.description,
             url: newDish.url
         }
+
+        // changed the state of the hook
         setNewReceipt(newReceipt)
 
+        // changed the state of the hook
         setDish({
             title: '',
             cookingTime: '',
@@ -37,7 +50,9 @@ const AddReceipt = ({dishes, create}) => {
             description: '',
             receipt: '',
         })
+        // checking if the newReceipt exist
         if (newReceipt) {
+            // reload the page
             window.location.reload(false)
         }
     }

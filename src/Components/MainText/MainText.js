@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './MainText.module.css'
 
+// Simple component to divide unnecessary information from the main component
 const MainText = () => {
     return (
         <div className={classes.MainText}>
