@@ -4,7 +4,6 @@ import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
 import Gallery from "../Gallery/Carusel.js";
 import InputMy from "../Input/InputMy.js";
-import UploadForm from "../UploadForm/UploadForm.js";
 import MyButton from "../MyButton/MyButton.js";
 
 const RecipeCard = ({dish, remove, change}) => {
@@ -35,31 +34,24 @@ const RecipeCard = ({dish, remove, change}) => {
         await DishesService.deleteDishByID(dish.id)
     }
 
-    // sleep time expects milliseconds
-    function sleep (time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-    }
-
     const changeDishByID = (e) => {
-        const newDish = DishesService.putDishByID(dishChange)
         e.preventDefault()
+        const newDish = DishesService.putDishByID(dishChange)
 
-        sleep(1500).then(() => {
-            const newReceipt = {
-                id: newDish.id,
-                title: newDish.title,
-                cookingTime: newDish.cookingTime,
-                callories: newDish.callories,
-                description: newDish.description
-            }
-            setUpdatedDish(newReceipt)
-            window.location.reload(false);
-        })
+        const newReceipt = {
+            id: newDish.id,
+            title: newDish.title,
+            cookingTime: newDish.cookingTime,
+            callories: newDish.callories,
+            description: newDish.description
+        }
+        setUpdatedDish(newReceipt)
+        if (newReceipt) {
+            window.location.reload(false)
+        }
     }
 
     return <div className={classes.card}>
-
-
         <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
         <div className={classes.card__content}>
             <strong>{dish.title}</strong>
@@ -126,11 +118,12 @@ const RecipeCard = ({dish, remove, change}) => {
                         type="text"
                         placeholder={dishChange.receipt}
                     />
-                    <UploadForm/>
+                    {/*<UploadForm/>*/}
                     <MyButton
                         onClick={(e) =>{
                             changeDishByID(e)
                             change(updatedDish)
+                            setModal2Active(false)
                         }}
                     >
                         Отправить отредактированный рецепт в книгу рецептов
@@ -151,4 +144,4 @@ const RecipeCard = ({dish, remove, change}) => {
     </div>;
 };
 
-export default RecipeCard;
+export default RecipeCard

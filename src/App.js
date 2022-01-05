@@ -14,14 +14,17 @@ function App() {
     const [dishes, setDishes] = useState([])
     const [searchQuery, setSearchQuery] = useState('')
 
+    // Hook for searching receipts
     const searchedDishes = useMemo(() => {
         return dishes.filter(dish => dish.title.toLowerCase().includes(searchQuery.toLowerCase()))
     }, [searchQuery, dishes])
 
+    // Hook for uploading posts on startup of the page
     useEffect( () => {
         fetchDishes()
     },[])
 
+    // Func
     async function fetchDishes() {
         const dishes = await DishesService.getAll()
         setDishes(dishes)
@@ -37,6 +40,11 @@ function App() {
         setDishes(dishes)
     }
 
+    // Function creating new receipt and added to list of the receipts
+    const createReceipt = (newDish) => {
+        setDishes([...dishes, newDish])
+    }
+
   return (
       <div>
         <Title/>
@@ -49,8 +57,15 @@ function App() {
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Поиск..."
           />
-        <AddReceipt dishes={dishes} setDishes={setDishes}/>
-        <DishList change={changeReceipt} remove={removeReceipt} dishes={searchedDishes} />
+          <AddReceipt
+              dishes={dishes}
+              create={createReceipt}
+          />
+        <DishList
+            change={changeReceipt}
+            remove={removeReceipt}
+            dishes={searchedDishes}
+        />
       </div>
   );
 }

@@ -4,46 +4,42 @@ import MyModal from "../MyModal/MyModal.js";
 import classes from "./AddReceipt.module.css";
 import InputMy from "../Input/InputMy.js";
 import DishesService from "../../API/DischesService.js";
-import UploadForm from "../UploadForm/UploadForm.js";
 
-
-const AddReceipt = ({dishes}) => {
+const AddReceipt = ({dishes, create}) => {
 
     const [modalAddReceipt, setModalAddReceipt] = useState(false)
-
+    const [newReceipt, setNewReceipt] = useState({})
     const [dish, setDish] = useState({
         title: '',
         cookingTime: '',
         callories: '',
         description: '',
-        receipt: ''
+        receipt: '',
     })
 
-    async function addNewReceipt(dish, dishes) {
-        DishesService.createNewDish(dish, dishes)
-    }
-
-    // sleep time expects milliseconds
-    function sleep (time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-    }
-
-    const addReceipt = (e) => {
-
-        addNewReceipt(dish, dishes)
+    async function addNewReceipt(e) {
         e.preventDefault()
+        const newDish = await DishesService.createNewDish(dish, dishes)
+        const newReceipt = {
+            id: newDish.id,
+            title: newDish.title,
+            cookingTime: newDish.cookingTime,
+            callories: newDish.callories,
+            description: newDish.description,
+            url: newDish.url
+        }
+        setNewReceipt(newReceipt)
 
-        sleep(500).then(() => {
-            setDish({
-                title: '',
-                cookingTime: '',
-                callories: '',
-                description: '',
-                receipt: ''
-            })
-            window.location.reload(false);
+        setDish({
+            title: '',
+            cookingTime: '',
+            callories: '',
+            description: '',
+            receipt: '',
         })
-
+        if (newReceipt) {
+            window.location.reload(false)
+        }
     }
 
     return (
@@ -87,9 +83,11 @@ const AddReceipt = ({dishes}) => {
                         type="text"
                         placeholder="Рецепт"
                     />
-                    <UploadForm/>
                     <MyButton
-                        onClick={addReceipt}
+                        onClick={(e) => {
+                            addNewReceipt(e)
+                            create(newReceipt)
+                        }}
                     >
                         Добавить рецепт в книгу рецептов
                     </MyButton>
