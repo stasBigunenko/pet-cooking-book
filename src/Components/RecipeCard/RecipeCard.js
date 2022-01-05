@@ -5,6 +5,7 @@ import DishesService from "../../API/DischesService.js";
 import Gallery from "../Gallery/Carusel.js";
 import InputMy from "../Input/InputMy.js";
 import MyButton from "../MyButton/MyButton.js";
+import LikeButton from "../LikeButton/LikeButton.js";
 
 // Component with the main functions and hooks
 const RecipeCard = ({dish, remove, change}) => {
@@ -99,7 +100,6 @@ const RecipeCard = ({dish, remove, change}) => {
                 <p>{dishById.receipt}</p>
                 {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
             </MyModal>
-
             <button
                 className={classes.card__btn}
                 onClick={() => {
@@ -159,6 +159,7 @@ const RecipeCard = ({dish, remove, change}) => {
             >
                 Удалить рецепт
             </button>
+            <LikeButton/>
         </div>
     </div>;
 };

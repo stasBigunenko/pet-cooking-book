@@ -49,7 +49,9 @@ export default class DishesService {
     // Method that delete receipt from the 1st and the 2d db
     static async deleteDishByID(id) {
         await axios.delete('http://localhost:3004/dishes/' + id).then(() => {
-            axios.delete('http://localhost:3004/dish/' + id)
+            axios.delete('http://localhost:3004/dish/' + id).then(() => {
+                axios.delete('http://localhost:3004/photo/' + id)
+            })
         })
     }
 
