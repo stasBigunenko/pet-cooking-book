@@ -70,30 +70,27 @@ export default class DishesService {
 
     // Method that insert data to the db
     static async putDishByID(changeDish) {
-        axios.put('http://localhost:3004/dishes/' + changeDish.id, {
+        await axios.put('http://localhost:3004/dishes/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
             callories: changeDish.callories,
             description: changeDish.description,
             url: changeDish.url
-        }).catch(function (error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            }
         })
         axios.put('http://localhost:3004/dish/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,
             receipt:changeDish.receipt
-        }).catch(function (error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            }
         })
+        const newDish = {
+            id: changeDish.id,
+            title: changeDish.title,
+            cookingTime: changeDish.cookingTime,
+            callories: changeDish.callories,
+            description: changeDish.description,
+            url: changeDish.url
+        }
+        return newDish;
     }
 }
