@@ -63,30 +63,6 @@
       "callories": "21bb",
       "description": "aabb",
       "url": "none.png"
-    },
-    {
-      "id": 9,
-      "title": "dsa!",
-      "cookingTime": "asd!",
-      "callories": "dsa!",
-      "description": "asd!",
-      "url": "none.png"
-    },
-    {
-      "id": 10,
-      "title": "dddddddd",
-      "cookingTime": "dddddddd",
-      "callories": "ddddddd",
-      "description": "ddddddd",
-      "url": "none.png"
-    },
-    {
-      "id": 11,
-      "title": "fghsdf!",
-      "cookingTime": "hgffds!",
-      "callories": "fghsdf!",
-      "description": "hgffds!",
-      "url": "none.png"
     }
   ],
   "dish": [
@@ -129,16 +105,6 @@
       "id": 8,
       "title": "aaabbb",
       "receipt": "aaaabb"
-    },
-    {
-      "id": 10,
-      "title": "dddddddd",
-      "receipt": "dddddddd"
-    },
-    {
-      "id": 11,
-      "title": "fghsdf!",
-      "receipt": "fghhhgfhhgf!!!!!"
     }
   ],
   "photo": [

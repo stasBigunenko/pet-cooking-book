@@ -11,7 +11,10 @@ import AddReceipt from "./Components/AddReceipt/AddReceipt.js";
 
 function App() {
 
+    // Hook for controling the state of the receipts
     const [dishes, setDishes] = useState([])
+
+    //hook for controling the state of the searched receipts
     const [searchQuery, setSearchQuery] = useState('')
 
     // Hook for searching receipts
@@ -24,16 +27,18 @@ function App() {
         fetchDishes()
     },[])
 
-    // Func
+    // Function to receive all receipts from the db
     async function fetchDishes() {
         const dishes = await DishesService.getAll()
         setDishes(dishes)
     }
 
+    // Function to remove the receipt from the list
     const removeReceipt = (dish) => {
         setDishes(dishes.filter(d => d.id !== dish.id))
     }
 
+    // Function to change the receipt in the list
     const changeReceipt = (newReceipt) => {
         const foundIndex = dishes.findIndex(d => d.id === newReceipt.id);
         dishes[foundIndex] = newReceipt;

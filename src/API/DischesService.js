@@ -1,16 +1,21 @@
 import axios from "axios";
 
+// Class for working with the db
 export default class DishesService {
+
+    // Method that receive all the receipts from the 1st db
     static async getAll() {
         const response = await axios.get('http://localhost:3004/dishes')
         return response.data
     }
 
+    // Method that receive the full receipt from the 2d db
     static async getDishByID(id) {
         const response = await axios.get('http://localhost:3004/dish/'+id)
         return response.data
     }
 
+    // Method that receive the photos from the 3d db for the Carousel
     static async getPhotosByID(id) {
         try {
             const response = await axios.get('http://localhost:3004/photo/' + id)
@@ -22,6 +27,7 @@ export default class DishesService {
         }
     }
 
+    // Method that create receipt in the 1st and 2d db
     static async createNewDish(dish, dishes) {
         dish.id = dishes[dishes.length-1].id + 1
         await axios.post(`http://localhost:3004/dishes`, {
@@ -40,12 +46,14 @@ export default class DishesService {
         return dish
     }
 
+    // Method that delete receipt from the 1st and the 2d db
     static async deleteDishByID(id) {
         await axios.delete('http://localhost:3004/dishes/' + id).then(() => {
             axios.delete('http://localhost:3004/dish/' + id)
         })
     }
 
+    // Method that receive the full receipt from the 1st and 2d db
     static async getReceiptByID(id) {
         const response1 = await axios.get('http://localhost:3004/dishes/' + id)
         const response2 = await axios.get('http://localhost:3004/dish/' + id)
@@ -60,41 +68,8 @@ export default class DishesService {
         };
     }
 
+    // Method that insert data to the db
     static async putDishByID(changeDish) {
-        // return await axios.put('http://localhost:3004/dishes/' + changeDish.id, {
-        //     id: changeDish.id,
-        //     title: changeDish.title,
-        //     cookingTime: changeDish.cookingTime,
-        //     callories: changeDish.callories,
-        //     description: changeDish.description,
-        //     url: changeDish.url})
-        //     .then(() => {
-        //         axios.put('http://localhost:3004/dish/' + changeDish.id, {
-        //         id: changeDish.id,
-        //         title: changeDish.title,
-        //         receipt:changeDish.receipt
-        //     })
-        // })
-
-        // await axios.put('http://localhost:3004/dish/' + changeDish.id, {
-        //             id: changeDish.id,
-        //             title: changeDish.title,
-        //             receipt:changeDish.receipt
-        // })
-        // return await axios.all([
-        //     axios.put('http://localhost:3004/dishes/' + changeDish.id, {
-        //         id: changeDish.id,
-        //         title: changeDish.title,
-        //         cookingTime: changeDish.cookingTime,
-        //         callories: changeDish.callories,
-        //         description: changeDish.description,
-        //         url: changeDish.url}),
-        //     axios.put('http://localhost:3004/dish/' + changeDish.id, {
-        //                 id: changeDish.id,
-        //                 title: changeDish.title,
-        //                 receipt:changeDish.receipt
-        //     })
-        // ])
         axios.put('http://localhost:3004/dishes/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,
@@ -109,7 +84,6 @@ export default class DishesService {
                 console.log(error.response.headers);
             }
         })
-
         axios.put('http://localhost:3004/dish/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,

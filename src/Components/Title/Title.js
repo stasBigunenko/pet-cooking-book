@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Title.module.css'
 
+// Simple component to divide unnecessary information from the main component
 const Title = () => {
     return (
             <div className={classes.Title}>
