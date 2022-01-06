@@ -30,13 +30,15 @@ export default class DishesService {
     // Method that create receipt in the 1st and 2d db
     static async createNewDish(dish, dishes) {
         dish.id = dishes[dishes.length-1].id + 1
+        dish.likes = 0
         await axios.post(`http://localhost:3004/dishes`, {
             id: dish.id,
             title: dish.title,
             cookingTime: dish.cookingTime,
             calories: dish.calories,
             description: dish.description,
-            url: "none.png"
+            url: "none.png",
+            likes: 0
         })
         await axios.post(`http://localhost:3004/dish`, {
             id: dish.id,
@@ -66,6 +68,7 @@ export default class DishesService {
             calories: response1.data.calories,
             description: response1.data.description,
             url: response1.data.url,
+            likes: response1.data.likes,
             receipt: response2.data.receipt
         };
     }
@@ -78,7 +81,8 @@ export default class DishesService {
             cookingTime: changeDish.cookingTime,
             calories: changeDish.calories,
             description: changeDish.description,
-            url: changeDish.url
+            url: changeDish.url,
+            likes: changeDish.likes
         })
         axios.put('http://localhost:3004/dish/' + changeDish.id, {
             id: changeDish.id,
@@ -91,7 +95,8 @@ export default class DishesService {
             cookingTime: changeDish.cookingTime,
             calories: changeDish.calories,
             description: changeDish.description,
-            url: changeDish.url
+            url: changeDish.url,
+            likes: changeDish.likes
         }
         return newDish;
     }

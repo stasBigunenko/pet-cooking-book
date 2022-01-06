@@ -36,7 +36,8 @@ const AddReceipt = ({dishes, create}) => {
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,
             description: newDish.description,
-            url: newDish.url
+            url: newDish.url,
+            likes: newDish.likes
         }
 
         // changed the state of the hook

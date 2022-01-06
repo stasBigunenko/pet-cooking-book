@@ -62,7 +62,8 @@ const RecipeCard = ({dish, remove, change, changedLikes}) => {
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,
             description: newDish.description,
-            url: newDish.url
+            url: newDish.url,
+            likes: newDish.likes
         }
         // Changed the state of the hook
         setUpdatedDish(newReceipt)
