@@ -8,7 +8,7 @@ import MyButton from "../MyButton/MyButton.js";
 import LikeButton from "../LikeButton/LikeButton.js";
 
 // Component with the main functions and hooks
-const RecipeCard = ({dish, remove, change}) => {
+const RecipeCard = ({dish, remove, change, changedLikes}) => {
     // Hook to control the state of the modal window for the "Полный рецепт"
     const [modalActive, setModalActive] = useState(false)
     // Hook to control the state of the modal window for the "Редактировать рецепт"
@@ -149,7 +149,6 @@ const RecipeCard = ({dish, remove, change}) => {
                     </MyButton>
                 </form>
             </MyModal>
-
             <button
                 className={classes.card__btn2}
                 onClick={() => {
@@ -159,7 +158,7 @@ const RecipeCard = ({dish, remove, change}) => {
             >
                 Удалить рецепт
             </button>
-            <LikeButton/>
+            <LikeButton dish={dish} changedLikes={changedLikes}/>
         </div>
     </div>;
 };

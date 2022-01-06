@@ -50,6 +50,13 @@ function App() {
         setDishes([...dishes, newDish])
     }
 
+    // Function that changes likes on the main page
+    const changedLikes = (likes) => {
+        const foundIndex = dishes.findIndex(d => d.id === likes.id);
+        dishes[foundIndex] = likes;
+        setDishes(dishes)
+    }
+
   return (
       <div>
         <Title/>
@@ -70,6 +77,7 @@ function App() {
             change={changeReceipt}
             remove={removeReceipt}
             dishes={searchedDishes}
+            changedLikes={changedLikes}
         />
       </div>
   );

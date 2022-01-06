@@ -95,4 +95,16 @@ export default class DishesService {
         }
         return newDish;
     }
+
+    static async likesByID(likes) {
+        const response = await axios.put('http://localhost:3004/dishes/' + likes.id, {
+            id: likes.id,
+            title: likes.title,
+            cookingTime: likes.cookingTime,
+            calories: likes.calories,
+            description: likes.description,
+            url: likes.url,
+            likes: likes.likes
+        })
+    }
 }
