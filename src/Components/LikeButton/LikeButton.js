@@ -2,23 +2,25 @@ import React, {useEffect, useState} from 'react';
 import classes from './LikeButton.module.css'
 import DishesService from "../../API/DischesService.js";
 
+// Component with like, dislike button and quantity
 const LikeButton = ({dish, changedLikes}) => {
+    // Hook that controlling the state of likes
     const [likes, setLikes] = useState(dish)
-
+    // Increment function - increase likes at every click
     function increment() {
         setLikes({...likes, likes:likes.likes+1})
-        // likesById(likes)
     }
-
+    // Decrement function - decrease likes at every click
     function decrement() {
         setLikes({...likes, likes:likes.likes-1})
-        // likesById(likes)
     }
 
+    // Hook controlling the async function and changes of the likes state
     useEffect( () => {
         likesById(likes)
     },[likes])
 
+    // Function that change the likes in db
     async function likesById(likes) {
         await DishesService.likesByID(likes)
     }
