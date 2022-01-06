@@ -1,32 +1,49 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './LikeButton.module.css'
+import DishesService from "../../API/DischesService.js";
 
-const LikeButton = () => {
-    const [likes, setLikes] = useState(0)
+const LikeButton = ({dish, changedLikes}) => {
+    const [likes, setLikes] = useState(dish)
 
     function increment() {
-        setLikes(likes + 1)
+        setLikes({...likes, likes:likes.likes+1})
+        // likesById(likes)
     }
 
     function decrement() {
-        setLikes(likes - 1)
+        setLikes({...likes, likes:likes.likes-1})
+        // likesById(likes)
+    }
+
+    useEffect( () => {
+        likesById(likes)
+    },[likes])
+
+    async function likesById(likes) {
+        await DishesService.likesByID(likes)
     }
 
     return (
         <div>
             <button
                 className={classes.likeButton}
-                onClick={increment}
+                onClick={() => {
+                    increment()
+                    changedLikes(likes)
+                }}
             >
-                <img src={require('../../Images/Likes/like.png')}/>
+                <img src={require('../../Images/Likes/like.png')} alt=''/>
             </button>
             <button
                 className={classes.likeButton}
-                onClick={decrement}
+                onClick={() => {
+                    decrement()
+                    changedLikes(likes)
+                }}
             >
-                <img src={require('../../Images/Likes/dislike.png')}/>
+                <img src={require('../../Images/Likes/dislike.png')} alt=''/>
             </button>
-            <p>{likes}</p>
+            <p>{likes.likes}</p>
         </div>
     );
 };
