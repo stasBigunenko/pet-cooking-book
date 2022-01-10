@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import MyButton from "../MyButton/MyButton.js";
 import MyModal from "../MyModal/MyModal.js";
 import classes from "./AddReceipt.module.css";
@@ -8,13 +8,10 @@ import DishesService from "../../API/DischesService.js";
 // Component that create new receipt
 const AddReceipt = ({dishes, create}) => {
 
-    // Hook to control the state of the modal window
-    const [modalAddReceipt, setModalAddReceipt] = useState(false)
+    // Hook useRef to test if it's the first render
+    const firstRender = useRef(true)
 
-    // Hook to control the state of the new receipt
-    const [newReceipt, setNewReceipt] = useState({})
-
-    // Hook to control the state of the data in the modal window
+    // Hook useState to set up initial value
     const [dish, setDish] = useState({
         title: '',
         cookingTime: '',
@@ -22,6 +19,36 @@ const AddReceipt = ({dishes, create}) => {
         description: '',
         receipt: '',
     })
+
+    // for every change in our state this will be fired
+    // we add validation here and disable the save button if required
+    useEffect(() => {
+
+        // skip validation on first render
+        if (firstRender.current) {
+            firstRender.current = false
+            return
+        }
+
+        formValidation()
+
+    }, [dish])
+
+    const formValidation = () => {
+        for (let key in dish) {
+            if (dish.key === "") {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
+    // Hook to control the state of the modal window
+    const [modalAddReceipt, setModalAddReceipt] = useState(false)
+
+    // Hook to control the state of the new receipt
+    const [newReceipt, setNewReceipt] = useState({})
 
     // Function to add a new receipt
     async function addNewReceipt(e) {
@@ -68,43 +95,48 @@ const AddReceipt = ({dishes, create}) => {
                 Добавить рецепт
             </MyButton>
             <MyModal active={modalAddReceipt} setActive={setModalAddReceipt} >
-                <form>
+                <form onSubmit={(e) => {
+                    addNewReceipt(e)
+                    create(newReceipt)
+                }}>
                     <InputMy
                         value={dish.title}
                         onChange={e => setDish({...dish, title: e.target.value})}
                         type="text"
                         placeholder="Название блюда"
+                        required
                     />
                     <InputMy
                         value={dish.cookingTime}
                         onChange={e => setDish({...dish, cookingTime: e.target.value})}
-                        type="text"
+                        type="number"
+                        min="0"
                         placeholder="Время приготовления (мин)"
+                        required
                     />
                     <InputMy
                         value={dish.calories}
                         onChange={e => setDish({...dish, calories: e.target.value})}
-                        type="text"
+                        type="number"
+                        min="0"
                         placeholder="Кол-во калорий (ккал)"
+                        required
                     />
                     <InputMy
                         value={dish.description}
                         onChange={e => setDish({...dish, description: e.target.value})}
                         type="text"
                         placeholder="Описание блюда"
+                        required
                     />
                     <InputMy
                         value={dish.receipt}
                         onChange={e => setDish({...dish, receipt: e.target.value})}
                         type="text"
                         placeholder="Рецепт"
+                        required
                     />
-                    <MyButton
-                        onClick={(e) => {
-                            addNewReceipt(e)
-                            create(newReceipt)
-                        }}
-                    >
+                    <MyButton>
                         Добавить рецепт в книгу рецептов
                     </MyButton>
                 </form>
