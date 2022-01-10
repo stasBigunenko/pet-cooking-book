@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
@@ -109,43 +109,48 @@ const RecipeCard = ({dish, remove, change, changedLikes}) => {
                 }}
             >Редактировать</button>
             <MyModal active={modal2Active} setActive={setModal2Active} >
-                <form>
+                <form onSubmit={(e) =>{
+                    changeDishByID(e)
+                    change(updatedDish)
+                }}>
                     <InputMy
                         value={dishChange.title}
                         onChange={e => setDishChange({...dishChange, title: e.target.value})}
                         type="text"
                         placeholder={dishChange.title}
+                        required
                     />
                     <InputMy
                         value={dishChange.cookingTime}
                         onChange={e => setDishChange({...dishChange, cookingTime: e.target.value})}
-                        type="text"
+                        type="number"
+                        min="0"
                         placeholder={dishChange.cookingTime}
+                        required
                     />
                     <InputMy
                         value={dishChange.calories}
                         onChange={e => setDishChange({...dishChange, calories: e.target.value})}
-                        type="text"
+                        type="number"
+                        min="0"
                         placeholder={dishChange.calories}
+                        required
                     />
                     <InputMy
                         value={dishChange.description}
                         onChange={e => setDishChange({...dishChange, description: e.target.value})}
                         type="text"
                         placeholder={dishChange.description}
+                        required
                     />
                     <InputMy
                         value={dishChange.receipt}
                         onChange={e => setDishChange({...dishChange, receipt: e.target.value})}
                         type="text"
                         placeholder={dishChange.receipt}
+                        required
                     />
-                    <MyButton
-                        onClick={(e) =>{
-                            changeDishByID(e)
-                            change(updatedDish)
-                        }}
-                    >
+                    <MyButton>
                         Отправить отредактированный рецепт в книгу рецептов
                     </MyButton>
                 </form>
