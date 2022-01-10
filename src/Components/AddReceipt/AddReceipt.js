@@ -8,9 +8,6 @@ import DishesService from "../../API/DischesService.js";
 // Component that create new receipt
 const AddReceipt = ({dishes, create}) => {
 
-    // Hook useRef to test if it's the first render
-    const firstRender = useRef(true)
-
     // Hook useState to set up initial value
     const [dish, setDish] = useState({
         title: '',
@@ -19,30 +16,6 @@ const AddReceipt = ({dishes, create}) => {
         description: '',
         receipt: '',
     })
-
-    // for every change in our state this will be fired
-    // we add validation here and disable the save button if required
-    useEffect(() => {
-
-        // skip validation on first render
-        if (firstRender.current) {
-            firstRender.current = false
-            return
-        }
-
-        formValidation()
-
-    }, [dish])
-
-    const formValidation = () => {
-        for (let key in dish) {
-            if (dish.key === "") {
-                return true
-            } else {
-                return false
-            }
-        }
-    }
 
     // Hook to control the state of the modal window
     const [modalAddReceipt, setModalAddReceipt] = useState(false)
