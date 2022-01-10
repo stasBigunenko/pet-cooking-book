@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# After cloning the repo you should configure your Cloned App
+
+### `npm install`
+
 # Before starting should be installed the following:
 
 ## npm-js server
