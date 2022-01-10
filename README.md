@@ -22,7 +22,7 @@ the json-server package:
 
 ### `npm install react-grid-carousel --save`
 
-# After all installation:
+# After all installations:
 
 You should start the server on port 3004 in the  terminal window with the following command:
 ### `json-server --watch db.json --port 3004`
