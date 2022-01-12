@@ -1,16 +1,17 @@
-
 .card {
     height: auto;
     width: 100%;
     display: flex;
     padding: 15px;
-    border: 2px solid teal;
+    border-radius: 2px;
+    border: solid teal;
     margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.5);
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    cursor: grab;
 }
 
-.card:focus {
-    background-color: rgba(255, 255, 255, 0.1);
+.card:hover {
+    border: solid indianred;
 }
 
 .card__content {

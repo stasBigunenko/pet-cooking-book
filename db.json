@@ -2,6 +2,7 @@
   "dishes": [
     {
       "id": 1,
+      "order": 2,
       "title": "Вареные яйца вкрутую",
       "cookingTime": "10",
       "calories": 120,
@@ -11,6 +12,7 @@
     },
     {
       "id": 2,
+      "order": 2,
       "title": "Блины тонкие",
       "cookingTime": "40",
       "calories": 1000,
@@ -20,6 +22,7 @@
     },
     {
       "id": 3,
+      "order": 3,
       "title": "Паста карбонара",
       "cookingTime": "25",
       "calories": 2000,
@@ -29,6 +32,7 @@
     },
     {
       "id": 4,
+      "order": 4,
       "title": "Пицца маргарита",
       "cookingTime": "30",
       "calories": 2500,
@@ -38,6 +42,7 @@
     },
     {
       "id": 5,
+      "order": 5,
       "title": "Лосось",
       "cookingTime": "20",
       "calories": 1500,
@@ -47,6 +52,7 @@
     },
     {
       "id": 6,
+      "order": 8,
       "title": "Стейк",
       "cookingTime": "12",
       "calories": 1800,
@@ -56,6 +62,7 @@
     },
     {
       "id": 7,
+      "order": 6,
       "title": "Овощи грилль",
       "cookingTime": "10",
       "calories": 800,

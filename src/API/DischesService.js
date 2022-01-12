@@ -5,7 +5,7 @@ export default class DishesService {
 
     // Method that receive all the receipts from the 1st db
     static async getAll() {
-        const response = await axios.get('http://localhost:3004/dishes')
+        const response = await axios.get('http://localhost:3004/dishes?_sort=order&_order=asc')
         return response.data
     }
 
@@ -29,10 +29,13 @@ export default class DishesService {
 
     // Method that create receipt in the 1st and 2d db
     static async createNewDish(dish, dishes) {
-        dish.id = dishes[dishes.length-1].id + 1
+
+        dish.id = Math.max.apply(Math, dishes.map(function(d) { return d.id; })) + 1
+        dish.order = Math.max.apply(Math, dishes.map(function(d) { return d.order; })) + 1
         dish.likes = 0
         await axios.post(`http://localhost:3004/dishes`, {
             id: dish.id,
+            order: dish.order,
             title: dish.title,
             cookingTime: dish.cookingTime,
             calories: dish.calories,
@@ -63,6 +66,7 @@ export default class DishesService {
         const response2 = await axios.get('http://localhost:3004/dish/' + id)
         return {
             id: response1.data.id,
+            order:response1.data.order,
             title: response1.data.title,
             cookingTime: response1.data.cookingTime,
             calories: response1.data.calories,
@@ -77,6 +81,7 @@ export default class DishesService {
     static async putDishByID(changeDish) {
         await axios.put('http://localhost:3004/dishes/' + changeDish.id, {
             id: changeDish.id,
+            order: changeDish.order,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
             calories: changeDish.calories,
@@ -91,6 +96,7 @@ export default class DishesService {
         })
         const newDish = {
             id: changeDish.id,
+            order: changeDish.order,
             title: changeDish.title,
             cookingTime: changeDish.cookingTime,
             calories: changeDish.calories,
@@ -104,12 +110,36 @@ export default class DishesService {
     static async likesByID(likes) {
         const response = await axios.put('http://localhost:3004/dishes/' + likes.id, {
             id: likes.id,
+            order: likes.order,
             title: likes.title,
             cookingTime: likes.cookingTime,
             calories: likes.calories,
             description: likes.description,
             url: likes.url,
             likes: likes.likes
+        })
+    }
+
+    static async swapReceipts(dish1, dish2) {
+        await axios.put('http://localhost:3004/dishes/' + dish1.id, {
+            id: dish1.id,
+            order: dish2.order,
+            title: dish1.title,
+            cookingTime: dish1.cookingTime,
+            calories: dish1.calories,
+            description: dish1.description,
+            url: dish1.url,
+            likes: dish1.likes
+        })
+        await axios.put('http://localhost:3004/dishes/' + dish2.id, {
+            id: dish2.id,
+            order: dish1.order,
+            title: dish2.title,
+            cookingTime: dish2.cookingTime,
+            calories: dish2.calories,
+            description: dish2.description,
+            url: dish2.url,
+            likes: dish2.likes
         })
     }
 }
