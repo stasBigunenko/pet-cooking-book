@@ -2,7 +2,7 @@
   "dishes": [
     {
       "id": 1,
-      "order": 2,
+      "order": 1,
       "title": "Вареные яйца вкрутую",
       "cookingTime": "10",
       "calories": 120,
