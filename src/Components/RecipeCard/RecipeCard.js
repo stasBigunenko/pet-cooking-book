@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
@@ -8,7 +8,7 @@ import MyButton from "../MyButton/MyButton.js";
 import LikeButton from "../LikeButton/LikeButton.js";
 
 // Component with the main functions and hooks
-const RecipeCard = ({dish, remove, change, changedLikes}) => {
+const RecipeCard = ({dish, remove, change, changedLikes, dnd, dishes}) => {
     // Hook to control the state of the modal window for the "Полный рецепт"
     const [modalActive, setModalActive] = useState(false)
     // Hook to control the state of the modal window for the "Редактировать рецепт"
@@ -58,6 +58,7 @@ const RecipeCard = ({dish, remove, change, changedLikes}) => {
         // add needed data to the new object
         const newReceipt = {
             id: newDish.id,
+            order: newDish.order,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,
@@ -74,9 +75,45 @@ const RecipeCard = ({dish, remove, change, changedLikes}) => {
         }
     }
 
-    return <div className={classes.card}>
+    function dragStartHandler (e, dish) {
+        e.dataTransfer.setData("dishID", dish.id)
+    }
+
+    function dragEndHandler(e) {
+        e.target.style.background = 'white'
+    }
+
+    function dragOverHandler (e) {
+        e.preventDefault()
+        e.target.style.background = 'lightgray'
+    }
+
+    function dropHandler (e, dish) {
+        e.preventDefault()
+        e.target.style.background = 'white'
+        const dragged = e.dataTransfer.getData("dishID")
+        const drag = dishes.findIndex(d => d.id == dragged)
+        const dropped = dishes.findIndex(d => d.id === dish.id)
+        DishesService.swapReceipts(dishes[drag], dishes[dropped])
+        const buff = dishes[drag]
+        dishes[drag] = dishes[dropped]
+        dishes[dropped] = buff
+        dnd(dishes)
+    }
+
+    return <div
+        onDragStart={(e) => dragStartHandler(e, dish)}
+        onDragLeave={(e) => dragEndHandler(e)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        onDragOver={(e) => dragOverHandler(e)}
+        onDrop={(e) => dropHandler(e, dish)}
+        draggable={true}
+        className={classes.card}
+    >
         <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
-        <div className={classes.card__content}>
+        <div
+            className={classes.card__content}
+        >
             <strong>{dish.title}</strong>
             <li>
                 Время приготовления - {dish.cookingTime} мин.

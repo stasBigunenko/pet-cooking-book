@@ -7,7 +7,7 @@
 
 /*Стиль для нашего root*/
 #root {
-    /*display: flex;*/
+    display: flex;
     justify-content: center;
     flex-direction: column;
 }

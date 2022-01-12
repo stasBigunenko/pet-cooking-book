@@ -32,6 +32,7 @@ const AddReceipt = ({dishes, create}) => {
         // add needed data to the new object
         const newReceipt = {
             id: newDish.id,
+            order: newDish.order,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,

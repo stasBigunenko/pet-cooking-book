@@ -57,6 +57,11 @@ function App() {
         setDishes(dishes)
     }
 
+    const dnd = (swapDishes) => {
+        setDishes(swapDishes)
+        // console.log(swapDishes)
+    }
+
   return (
       <div>
         <Title/>
@@ -78,6 +83,7 @@ function App() {
             remove={removeReceipt}
             dishes={searchedDishes}
             changedLikes={changedLikes}
+            dnd={dnd}
         />
       </div>
   );
