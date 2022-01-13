@@ -121,7 +121,7 @@ export default class DishesService {
     }
 
     static async swapReceipts(dish1, dish2) {
-        await axios.put('http://localhost:3004/dishes/' + dish1.id, {
+        const response1 = await axios.put('http://localhost:3004/dishes/' + dish1.id, {
             id: dish1.id,
             order: dish2.order,
             title: dish1.title,
@@ -131,7 +131,7 @@ export default class DishesService {
             url: dish1.url,
             likes: dish1.likes
         })
-        await axios.put('http://localhost:3004/dishes/' + dish2.id, {
+        const response2 = await axios.put('http://localhost:3004/dishes/' + dish2.id, {
             id: dish2.id,
             order: dish1.order,
             title: dish2.title,
@@ -141,5 +141,7 @@ export default class DishesService {
             url: dish2.url,
             likes: dish2.likes
         })
+
+        return [response1.data, response2.data];
     }
 }

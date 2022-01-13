@@ -8,8 +8,8 @@
 /*Стиль для нашего root*/
 #root {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    /*justify-content: center;*/
+    /*flex-direction: column;*/
 }
 
 .App {
