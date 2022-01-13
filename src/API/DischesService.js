@@ -33,6 +33,7 @@ export default class DishesService {
         dish.id = Math.max.apply(Math, dishes.map(function(d) { return d.id; })) + 1
         dish.order = Math.max.apply(Math, dishes.map(function(d) { return d.order; })) + 1
         dish.likes = 0
+        dish.url = "none.png"
         await axios.post(`http://localhost:3004/dishes`, {
             id: dish.id,
             order: dish.order,
@@ -40,7 +41,7 @@ export default class DishesService {
             cookingTime: dish.cookingTime,
             calories: dish.calories,
             description: dish.description,
-            url: "none.png",
+            url: dish.url,
             likes: 0
         })
         await axios.post(`http://localhost:3004/dish`, {

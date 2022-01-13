@@ -3,7 +3,7 @@ import classes from './LikeButton.module.css'
 import DishesService from "../../API/DischesService.js";
 
 // Component with like, dislike button and quantity
-const LikeButton = ({dish, changedLikes}) => {
+const LikeButton = ({dish}) => {
     // Hook that controlling the state of likes
     const [likes, setLikes] = useState(dish)
     // Increment function - increase likes at every click
@@ -31,7 +31,6 @@ const LikeButton = ({dish, changedLikes}) => {
                 className={classes.likeButton}
                 onClick={() => {
                     increment()
-                    changedLikes(likes)
                 }}
             >
                 <img src={require('../../Images/Likes/like.png')} alt=''/>
@@ -40,7 +39,6 @@ const LikeButton = ({dish, changedLikes}) => {
                 className={classes.likeButton}
                 onClick={() => {
                     decrement()
-                    changedLikes(likes)
                 }}
             >
                 <img src={require('../../Images/Likes/dislike.png')} alt=''/>

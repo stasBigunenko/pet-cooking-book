@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import MyButton from "../MyButton/MyButton.js";
 import MyModal from "../MyModal/MyModal.js";
 import classes from "./AddReceipt.module.css";
@@ -20,9 +20,6 @@ const AddReceipt = ({dishes, create}) => {
     // Hook to control the state of the modal window
     const [modalAddReceipt, setModalAddReceipt] = useState(false)
 
-    // Hook to control the state of the new receipt
-    const [newReceipt, setNewReceipt] = useState({})
-
     // Function to add a new receipt
     async function addNewReceipt(e) {
         // disable reloading of the page
@@ -40,10 +37,8 @@ const AddReceipt = ({dishes, create}) => {
             url: newDish.url,
             likes: newDish.likes
         }
-
-        // changed the state of the hook
-        setNewReceipt(newReceipt)
-
+        // return created receipt as props to the parent component
+        create(newReceipt)
         // changed the state of the hook
         setDish({
             title: '',
@@ -52,11 +47,6 @@ const AddReceipt = ({dishes, create}) => {
             description: '',
             receipt: '',
         })
-        // checking if the newReceipt exist
-        if (newReceipt) {
-            // reload the page
-            window.location.reload(false)
-        }
     }
 
     return (
@@ -71,7 +61,7 @@ const AddReceipt = ({dishes, create}) => {
             <MyModal active={modalAddReceipt} setActive={setModalAddReceipt} >
                 <form onSubmit={(e) => {
                     addNewReceipt(e)
-                    create(newReceipt)
+                    setModalAddReceipt(false)
                 }}>
                     <InputMy
                         value={dish.title}
