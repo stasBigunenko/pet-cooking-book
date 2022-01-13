@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
@@ -75,7 +75,11 @@ const RecipeCard = ({dish, remove, change, changedLikes, dnd, dishes}) => {
         }
     }
 
+    const[drag, setDrag] = useState(null)
+    const[dropped,setDropped] = useState(null)
+
     function dragStartHandler (e, dish) {
+        // setDrag(dishes.findIndex(d => d.id === dish.id))
         e.dataTransfer.setData("dishID", dish.id)
     }
 
@@ -91,15 +95,45 @@ const RecipeCard = ({dish, remove, change, changedLikes, dnd, dishes}) => {
     function dropHandler (e, dish) {
         e.preventDefault()
         e.target.style.background = 'white'
-        const dragged = e.dataTransfer.getData("dishID")
-        const drag = dishes.findIndex(d => d.id == dragged)
-        const dropped = dishes.findIndex(d => d.id === dish.id)
-        DishesService.swapReceipts(dishes[drag], dishes[dropped])
-        const buff = dishes[drag]
-        dishes[drag] = dishes[dropped]
-        dishes[dropped] = buff
-        dnd(dishes)
+        const drag = e.dataTransfer.getData("dishID")
+        const dragged = dishes.find(d => d.id === Number(drag))
+        const dropped = dishes.find(d => d.id === dish.id)
+        console.log('drag', dragged)
+        console.log('dropped', dropped)
+        DishesService.swapReceipts(dragged, dropped).then(()=>{
+            window.location.reload(false)
+            // setTimeout(window.location.reload(false), 600)
+        })
+
+
+
+        // DishesService.swapReceipts(dragged, dropped).then((response1, response2) => {
+        //     console.log('response1', response1)
+        //     console.log('response2', response2)
+            // const dragged1 = dishes.findIndex(d => d.id === response1.id)
+            // const dropped1 = dishes.findIndex(d => d.id === response2.id)
+            // const buff = dishes[dragged1]
+            // dishes[dragged1] = dishes[dropped1]
+            // dishes[dropped1] = buff
+            // dnd(dishes)
+        // })
     }
+
+    // async function swap() {
+    //     await DishesService.swapReceipts(dishes[drag], dishes[dropped])
+    // }
+    //
+    // useEffect(() => {
+    //     if (dishes[drag] && dishes[dropped]) {
+    //         swap()
+    //             .then(() => {
+    //                 const buff = dishes[drag]
+    //                 dishes[drag] = dishes[dropped]
+    //                 dishes[dropped] = buff
+    //                 dnd(dishes)
+    //             })
+    //     }
+    //     }, [dropped])
 
     return <div
         onDragStart={(e) => dragStartHandler(e, dish)}
@@ -109,6 +143,7 @@ const RecipeCard = ({dish, remove, change, changedLikes, dnd, dishes}) => {
         onDrop={(e) => dropHandler(e, dish)}
         draggable={true}
         className={classes.card}
+        id={dish.id}
     >
         <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
         <div

@@ -17,11 +17,11 @@ const LikeButton = ({dish, changedLikes}) => {
 
     // Hook controlling the async function and changes of the likes state
     useEffect( () => {
-        likesById(likes)
+        likesById()
     },[likes])
 
     // Function that change the likes in db
-    async function likesById(likes) {
+    async function likesById() {
         await DishesService.likesByID(likes)
     }
 
