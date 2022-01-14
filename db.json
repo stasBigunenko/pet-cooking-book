@@ -179,5 +179,94 @@
         "vegetables5.png"
       ]
     }
+  ],
+  "comments": [
+    {
+      "dishID": 1,
+      "comm": [
+        {
+          "commentID": 1.1,
+          "name": "Вася",
+          "body": "Комментарий1.1"
+        },
+        {
+          "commentID": 1.2,
+          "name": "Вася",
+          "body": "Комментарий1.2"
+        },
+        {
+          "commentID": 1.3,
+          "name": "Вася",
+          "body": "asddsa"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "dishID": 2,
+      "comm": [
+        {
+          "commentID": 2.1,
+          "name": "Вася",
+          "body": "Комментарий2.1"
+        },
+        {
+          "commentID": 2.2,
+          "name": "Вася",
+          "body": "dsa"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "id": 3,
+      "comm": [
+        {
+          "commentID": 3.1,
+          "name": "Вася",
+          "body": "Комментарий3.1"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "comm": [
+        {
+          "commentID": 4.1,
+          "name": "Вася",
+          "body": "Комментарий4.1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "comm": [
+        {
+          "commentID": 5.1,
+          "name": "Вася",
+          "body": "Комментарий5.1"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "comm": [
+        {
+          "commentID": 6.1,
+          "name": "Вася",
+          "body": "Комментарий6.1"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "comm": [
+        {
+          "commentID": 7.1,
+          "name": "Вася",
+          "body": "Комментарий7.1"
+        }
+      ]
+    }
   ]
 }

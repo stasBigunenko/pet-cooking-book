@@ -145,4 +145,23 @@ export default class DishesService {
 
         return [response1.data, response2.data];
     }
+
+    // Method that receive all the comments from the db
+    static async getAllComments(dishID) {
+        const response = await axios.get('http://localhost:3004/comments/' + dishID)
+        return response.data.comm
+    }
+
+    static async createComment(commentName, commentBody, comments, dishID) {
+        const comment = {}
+        comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
+        comment.name = commentName
+        comment.body = commentBody
+        const newComms = [...comments, comment]
+        await axios.put('http://localhost:3004/comments/' + dishID, {
+            dishID: dishID,
+            comm: newComms
+    })
+        return newComms
+    }
 }
