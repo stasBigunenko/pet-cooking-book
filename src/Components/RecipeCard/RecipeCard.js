@@ -6,6 +6,7 @@ import Gallery from "../Gallery/Carusel.js";
 import InputMy from "../Input/InputMy.js";
 import MyButton from "../MyButton/MyButton.js";
 import LikeButton from "../LikeButton/LikeButton.js";
+import Comments from "../Comments/Comments.js";
 
 // Component with the main functions and hooks
 const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
@@ -113,7 +114,6 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         onDrop={(e) => dropHandler(e, dish)}
         draggable={true}
         className={classes.card}
-        id={dish.id}
     >
         <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
         <div
@@ -206,6 +206,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             >
                 Удалить рецепт
             </button>
+            <Comments
+                dishID={dish.id}
+            />
             <LikeButton dish={dish} />
         </div>
     </div>;
