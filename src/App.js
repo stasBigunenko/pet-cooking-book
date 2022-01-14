@@ -42,7 +42,10 @@ function App() {
     const changeReceipt = (newReceipt) => {
         const foundIndex = dishes.findIndex(d => d.id === newReceipt.id);
         dishes[foundIndex] = newReceipt;
-        setDishes(dishes)
+        const changedArray = dishes.map(dish => {
+            return dish
+        })
+        setDishes(changedArray)
     }
 
     // Call back function creating new receipt and added to list of the receipts
