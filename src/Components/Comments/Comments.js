@@ -8,9 +8,10 @@ const Comments = ({dishID}) => {
 
     // Hook for controlling the state of the receipts
     const [comments, setComments] = useState([])
-
+    //Hook for controlling the state of the comment body
     const [commentBody, setCommentBody] = useState('')
-    const [commentName, setCommentName] = useState('')
+    //Hook for controlling the state of the author comment
+    const [commentAuthor, setCommentAuthor] = useState('')
 
     // Function to receive all comments from the db
     async function fetchComments() {
@@ -20,7 +21,7 @@ const Comments = ({dishID}) => {
 
     async function createComment(e) {
         e.preventDefault()
-        const newComments = await DishesService.createComment(commentName, commentBody, comments, dishID)
+        const newComments = await DishesService.createComment(commentAuthor, commentBody, comments, dishID)
         setComments(newComments)
     }
 
@@ -40,13 +41,13 @@ const Comments = ({dishID}) => {
                 createComment(e)
                 setModalActive(false)
                 setCommentBody('')
-                setCommentName('')
+                setCommentAuthor('')
             }}>
                 <input
                     style={{marginBottom:"12px"}}
                     placeholder='Ваше имя'
-                    value={commentName}
-                    onChange={e => setCommentName(e.target.value)}
+                    value={commentAuthor}
+                    onChange={e => setCommentAuthor(e.target.value)}
                     required={true}
                 />
                 <textarea

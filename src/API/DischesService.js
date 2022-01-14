@@ -49,6 +49,14 @@ export default class DishesService {
             title: dish.title,
             receipt: dish.receipt
         })
+        await axios.post(`http://localhost:3004/comments`, {
+            id: dish.id,
+            comm: []
+        })
+        await axios.post(`http://localhost:3004/photo`, {
+            id: dish.id,
+            pict: []
+        })
         return dish
     }
 
@@ -56,7 +64,9 @@ export default class DishesService {
     static async deleteDishByID(id) {
         await axios.delete('http://localhost:3004/dishes/' + id).then(() => {
             axios.delete('http://localhost:3004/dish/' + id).then(() => {
-                axios.delete('http://localhost:3004/photo/' + id)
+                axios.delete('http://localhost:3004/comments/' + id).then(() => {
+                    axios.delete('http://localhost:3004/photo/' + id)
+                })
             })
         })
     }
@@ -121,6 +131,7 @@ export default class DishesService {
         })
     }
 
+    // Method that swap orders in the db
     static async swapReceipts(dish1, dish2) {
         const response1 = await axios.put('http://localhost:3004/dishes/' + dish1.id, {
             id: dish1.id,
@@ -152,14 +163,19 @@ export default class DishesService {
         return response.data.comm
     }
 
-    static async createComment(commentName, commentBody, comments, dishID) {
+    // Method that create new comment in db
+    static async createComment(commentAuthor, commentBody, comments, dishID) {
         const comment = {}
-        comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
-        comment.name = commentName
+        if (comments.length == 0) {
+            comment.commentID = dishID + 0.1
+        } else {
+            comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
+        }
+        comment.author = commentAuthor
         comment.body = commentBody
         const newComms = [...comments, comment]
         await axios.put('http://localhost:3004/comments/' + dishID, {
-            dishID: dishID,
+            id: dishID,
             comm: newComms
     })
         return newComms

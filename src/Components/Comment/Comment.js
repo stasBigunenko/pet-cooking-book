@@ -3,7 +3,7 @@ import React from 'react';
 const Comment = ({comment}) => {
     return (
         <div style={{borderBottom: "solid black 0.5px", marginTop:'10px'}}>
-            <h4>{comment.name}</h4>
+            <h4>{comment.author}</h4>
             {comment.body}
         </div>
     );
