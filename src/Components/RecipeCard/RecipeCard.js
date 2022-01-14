@@ -75,30 +75,41 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         }
     }
 
+    // drag handler to control the item which is dragged
     function dragStartHandler (e, dish) {
+        // transfer needed data from dragged object to the dropped function
         e.dataTransfer.setData("dishID", dish.id)
     }
 
+    // drag end handler to control the object over which dragged
     function dragEndHandler(e) {
         e.target.style.background = 'white'
     }
 
+    // dragover handler to control over which item is dragged handler
     function dragOverHandler (e) {
+        // disable reloading of the page
         e.preventDefault()
         e.target.style.background = 'lightgray'
     }
 
-    function dropHandler (e, dish) {
+    // drop handler to control on which object is dropped dragged object
+    async function dropHandler (e, dish) {
+        // disable reloading of the page
         e.preventDefault()
         e.target.style.background = 'white'
+        // receiving the data from dragged object
         const drag = e.dataTransfer.getData("dishID")
+        // finding needed objects to send to the db
         const dragged = dishes.find(d => d.id === Number(drag))
         const dropped = dishes.find(d => d.id === dish.id)
-        console.log('drag', dragged)
-        console.log('dropped', dropped)
-        DishesService.swapReceipts(dragged, dropped).then(()=>{
-            window.location.reload(false)
-        })
+        // changing orders of the object in db
+        await DishesService.swapReceipts(dragged, dropped)
+        // finding needed indexes
+        let indexDragged = dishes.findIndex(d => d.id === Number(drag))
+        let indexDropped = dishes.findIndex(d => d.id === dish.id);
+        // returning to the parent component data
+        dnd(indexDragged, indexDropped)
     }
 
     return <div

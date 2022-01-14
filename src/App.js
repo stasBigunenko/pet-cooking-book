@@ -11,10 +11,10 @@ import AddReceipt from "./Components/AddReceipt/AddReceipt.js";
 
 function App() {
 
-    // Hook for controling the state of the receipts
+    // Hook for controlling the state of the receipts
     const [dishes, setDishes] = useState([])
 
-    //hook for controling the state of the searched receipts
+    //hook for controlling the state of the searched receipts
     const [searchQuery, setSearchQuery] = useState('')
 
     // Hook for searching receipts
@@ -45,17 +45,34 @@ function App() {
         setDishes(dishes)
     }
 
-    // Function creating new receipt and added to list of the receipts
+    // Call back function creating new receipt and added to list of the receipts
     const createReceipt = (newDish) => {
-
         setDishes(dishes => [...dishes, newDish])
-        console.log(dishes)
     }
 
-    const dnd = (swapDishes) => {
-        setDishes(swapDishes)
-        // console.log(swapDishes)
+    // Sort function for the swapped receipts
+    const sortReceipts = (a, b) => {
+        if (a.order > b.order) {
+            return 1
+        } else {
+            return -1
+        }
     }
+
+    // Callback function for drag and drop functionality
+    const dnd = (indexDragged, indexDropped) => {
+        // swapping object's order
+        let buff = dishes[indexDragged].order
+        dishes[indexDragged].order = dishes[indexDropped].order
+        dishes[indexDropped].order = buff
+        // creating a new array with the changed orders
+        const swappedArray = dishes.sort(sortReceipts).map(dish => {
+            return dish
+        })
+        setDishes(swappedArray)
+    }
+
+
 
   return (
       <div>
