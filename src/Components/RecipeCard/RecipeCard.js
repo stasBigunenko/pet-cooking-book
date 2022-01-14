@@ -19,8 +19,6 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     const [photosById, setPhotosById] = useState([])
     // Hook to control the state with changed dish
     const [dishChange, setDishChange] = useState({})
-    // Hook to control the state of the changed receipt
-    const [updatedDish, setUpdatedDish] = useState({})
 
     // Function to receive data from db and insert in the inputs
     async function fetchReceiptByID() {
@@ -66,13 +64,8 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             url: newDish.url,
             likes: newDish.likes
         }
-        // Changed the state of the hook
-        setUpdatedDish(newReceipt)
-        // checking if the newReceipt exist
-        if (newReceipt) {
-            // reload the page
-            window.location.reload(false)
-        }
+        // return to the callback function changed receipt
+        change(newReceipt)
     }
 
     // drag handler to control the item which is dragged
@@ -160,7 +153,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             <MyModal active={modal2Active} setActive={setModal2Active} >
                 <form onSubmit={(e) =>{
                     changeDishByID(e)
-                    change(updatedDish)
+                    setModal2Active(false)
                 }}>
                     <InputMy
                         value={dishChange.title}
@@ -199,7 +192,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         placeholder={dishChange.receipt}
                         required
                     />
-                    <MyButton>
+                    <MyButton >
                         Отправить отредактированный рецепт в книгу рецептов
                     </MyButton>
                 </form>
