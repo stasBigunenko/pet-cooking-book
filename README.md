@@ -1,3 +1,11 @@
+# A UI for a Cooking Book Pet-Project
+
+This app displays recipes wiht pictures and small description of the dish. Users can view detailed receipt by pushing the button.
+
+Also users can add, modify and delete a recipe.
+
+Additionally you can put likes to recipes.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
