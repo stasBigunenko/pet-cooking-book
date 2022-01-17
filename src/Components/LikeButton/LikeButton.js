@@ -6,13 +6,17 @@ import DishesService from "../../API/DischesService.js";
 const LikeButton = ({dish}) => {
     // Hook that controlling the state of likes
     const [likes, setLikes] = useState(dish)
+
+    const [isliked, setIsLiked] = useState(false)
     // Increment function - increase likes at every click
     function increment() {
         setLikes({...likes, likes:likes.likes+1})
+        setIsLiked(true)
     }
     // Decrement function - decrease likes at every click
     function decrement() {
         setLikes({...likes, likes:likes.likes-1})
+        setIsLiked(true)
     }
 
     // Hook controlling the async function and changes of the likes state
@@ -30,15 +34,20 @@ const LikeButton = ({dish}) => {
             <button
                 className={classes.likeButton}
                 onClick={() => {
-                    increment()
+                    if (!isliked) {
+                        increment()
+                    }
                 }}
+
             >
                 <img src={require('../../Images/Likes/like.png')} alt=''/>
             </button>
             <button
                 className={classes.likeButton}
                 onClick={() => {
-                    decrement()
+                    if (!isliked) {
+                        decrement()
+                    }
                 }}
             >
                 <img src={require('../../Images/Likes/dislike.png')} alt=''/>
