@@ -7,7 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 import DishList from "./Components/DishList/DishList.js";
 import InputMy from "./Components/Input/InputMy.js";
 import DishesService from "./API/DischesService.js";
-import AddReceipt from "./Components/AddReceipt/AddReceipt.js";
+import AddRecipe from "./Components/AddRecipe/AddRecipe.js";
 
 function App() {
 
@@ -34,12 +34,12 @@ function App() {
     }
 
     // Function to remove the receipt from the list
-    const removeReceipt = (dish) => {
+    const removeRecipe = (dish) => {
         setDishes(dishes.filter(d => d.id !== dish.id))
     }
 
     // Function to change the receipt in the list
-    const changeReceipt = (newReceipt) => {
+    const changeRecipe = (newReceipt) => {
         const foundIndex = dishes.findIndex(d => d.id === newReceipt.id);
         dishes[foundIndex] = newReceipt;
         const changedArray = dishes.map(dish => {
@@ -49,12 +49,12 @@ function App() {
     }
 
     // Call back function creating new receipt and added to list of the receipts
-    const createReceipt = (newDish) => {
+    const createRecipe = (newDish) => {
         setDishes(dishes => [...dishes, newDish])
     }
 
     // Sort function for the swapped receipts
-    const sortReceipts = (a, b) => {
+    const sortRecipes = (a, b) => {
         if (a.order > b.order) {
             return 1
         } else {
@@ -69,7 +69,7 @@ function App() {
         dishes[indexDragged].order = dishes[indexDropped].order
         dishes[indexDropped].order = buff
         // creating a new array with the changed orders
-        const swappedArray = dishes.sort(sortReceipts).map(dish => {
+        const swappedArray = dishes.sort(sortRecipes).map(dish => {
             return dish
         })
         setDishes(swappedArray)
@@ -89,13 +89,13 @@ function App() {
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Поиск..."
           />
-          <AddReceipt
+          <AddRecipe
               dishes={dishes}
-              create={createReceipt}
+              create={createRecipe}
           />
         <DishList
-            change={changeReceipt}
-            remove={removeReceipt}
+            change={changeRecipe}
+            remove={removeRecipe}
             dishes={searchedDishes}
             dnd={dnd}
         />

@@ -47,7 +47,7 @@ export default class DishesService {
         await axios.post(`http://localhost:3004/dish`, {
             id: dish.id,
             title: dish.title,
-            receipt: dish.receipt
+            recipe: dish.recipe
         })
         await axios.post(`http://localhost:3004/comments`, {
             id: dish.id,
@@ -72,7 +72,7 @@ export default class DishesService {
     }
 
     // Method that receive the full receipt from the 1st and 2d db
-    static async getReceiptByID(id) {
+    static async getRecipeByID(id) {
         const response1 = await axios.get('http://localhost:3004/dishes/' + id)
         const response2 = await axios.get('http://localhost:3004/dish/' + id)
         return {
@@ -84,7 +84,7 @@ export default class DishesService {
             description: response1.data.description,
             url: response1.data.url,
             likes: response1.data.likes,
-            receipt: response2.data.receipt
+            recipe: response2.data.recipe
         };
     }
 
@@ -103,7 +103,7 @@ export default class DishesService {
         axios.put('http://localhost:3004/dish/' + changeDish.id, {
             id: changeDish.id,
             title: changeDish.title,
-            receipt:changeDish.receipt
+            recipe:changeDish.recipe
         })
         const newDish = {
             id: changeDish.id,
@@ -132,7 +132,7 @@ export default class DishesService {
     }
 
     // Method that swap orders in the db
-    static async swapReceipts(dish1, dish2) {
+    static async swapRecipes(dish1, dish2) {
         const response1 = await axios.put('http://localhost:3004/dishes/' + dish1.id, {
             id: dish1.id,
             order: dish2.order,

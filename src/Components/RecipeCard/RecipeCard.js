@@ -14,7 +14,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     const [modalActive, setModalActive] = useState(false)
     // Hook to control the state of the modal window for the "Редактировать рецепт"
     const [modal2Active, setModal2Active] = useState(false)
-    // Hook to control the state of the receipt from db
+    // Hook to control the state of the recipe from db
     const [dishById, setDishById] = useState({})
     // Hook to control the state of the photos TODO
     const [photosById, setPhotosById] = useState([])
@@ -22,8 +22,8 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     const [dishChange, setDishChange] = useState({})
 
     // Function to receive data from db and insert in the inputs
-    async function fetchReceiptByID() {
-        const dishChange = await DishesService.getReceiptByID(dish.id)
+    async function fetchRecipeByID() {
+        const dishChange = await DishesService.getRecipeByID(dish.id)
         // Changed the state of the hook
         setDishChange(dishChange)
     }
@@ -43,19 +43,19 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         setPhotosById(photosById)
     }
 
-    // Function to delete the receipt by id from db
+    // Function to delete the recipe by id from db
     async function deleteDishById() {
         await DishesService.deleteDishByID(dish.id)
     }
 
-    // Function to change the receipt by id in db-s
+    // Function to change the recipe by id in db-s
     async function changeDishByID (e) {
         // disable reloading of the page
         e.preventDefault()
         // created new variable to receive the data from the function
         const newDish = await DishesService.putDishByID(dishChange)
         // add needed data to the new object
-        const newReceipt = {
+        const newRecipe= {
             id: newDish.id,
             order: newDish.order,
             title: newDish.title,
@@ -65,8 +65,8 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             url: newDish.url,
             likes: newDish.likes
         }
-        // return to the callback function changed receipt
-        change(newReceipt)
+        // return to the callback function changed recrecipeeipt
+        change(newRecipe)
     }
 
     // drag handler to control the item which is dragged
@@ -98,7 +98,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         const dragged = dishes.find(d => d.id === Number(drag))
         const dropped = dishes.find(d => d.id === dish.id)
         // changing orders of the object in db
-        await DishesService.swapReceipts(dragged, dropped)
+        await DishesService.swapRecipes(dragged, dropped)
         // finding needed indexes
         let indexDragged = dishes.findIndex(d => d.id === Number(drag))
         let indexDropped = dishes.findIndex(d => d.id === dish.id);
@@ -140,13 +140,13 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             >Полный рецепт</button>
             <MyModal active={modalActive} setActive={setModalActive} >
                 <strong>{dishById.title}</strong>
-                <p>{dishById.receipt}</p>
+                <p>{dishById.recipe}</p>
                 {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
             </MyModal>
             <button
                 className={classes.card__btn}
                 onClick={() => {
-                    fetchReceiptByID()
+                    fetchRecipeByID()
                     setModal2Active(true)
                 }}
             >Редактировать</button>
@@ -186,10 +186,10 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         required
                     />
                     <InputMy
-                        value={dishChange.receipt}
-                        onChange={e => setDishChange({...dishChange, receipt: e.target.value})}
+                        value={dishChange.recipe}
+                        onChange={e => setDishChange({...dishChange, recipe: e.target.value})}
                         type="text"
-                        placeholder={dishChange.receipt}
+                        placeholder={dishChange.recipe}
                         required
                     />
                     <MyButton >

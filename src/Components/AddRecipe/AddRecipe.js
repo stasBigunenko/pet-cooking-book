@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import MyButton from "../MyButton/MyButton.js";
 import MyModal from "../MyModal/MyModal.js";
-import classes from "./AddReceipt.module.css";
+import classes from "./AddRecipe.module.css";
 import InputMy from "../Input/InputMy.js";
 import DishesService from "../../API/DischesService.js";
 
-// Component that create new receipt
-const AddReceipt = ({dishes, create}) => {
+// Component that create new recipe
+const AddRecipe = ({dishes, create}) => {
 
     // Hook useState to set up initial value
     const [dish, setDish] = useState({
@@ -14,20 +14,20 @@ const AddReceipt = ({dishes, create}) => {
         cookingTime: '',
         calories: '',
         description: '',
-        receipt: '',
+        recipe: '',
     })
 
     // Hook to control the state of the modal window
-    const [modalAddReceipt, setModalAddReceipt] = useState(false)
+    const [modalAddRecipe, setModalAddRecipe] = useState(false)
 
-    // Function to add a new receipt
-    async function addNewReceipt(e) {
+    // Function to add a new recipe
+    async function addNewRecipe(e) {
         // disable reloading of the page
         e.preventDefault()
         // created new variable to receive the data from the function
         const newDish = await DishesService.createNewDish(dish, dishes)
         // add needed data to the new object
-        const newReceipt = {
+        const newRecipe = {
             id: newDish.id,
             order: newDish.order,
             title: newDish.title,
@@ -37,15 +37,15 @@ const AddReceipt = ({dishes, create}) => {
             url: newDish.url,
             likes: newDish.likes
         }
-        // return created receipt as props to the parent component
-        create(newReceipt)
+        // return created recipe as props to the parent component
+        create(newRecipe)
         // changed the state of the hook
         setDish({
             title: '',
             cookingTime: '',
             calories: '',
             description: '',
-            receipt: '',
+            recipe: '',
         })
     }
 
@@ -54,14 +54,14 @@ const AddReceipt = ({dishes, create}) => {
             <MyButton
                 className={classes.addRec__btn}
                 onClick={() => {
-                    setModalAddReceipt(true)
+                    setModalAddRecipe(true)
                 }}>
                 Добавить рецепт
             </MyButton>
-            <MyModal active={modalAddReceipt} setActive={setModalAddReceipt} >
+            <MyModal active={modalAddRecipe} setActive={setModalAddRecipe} >
                 <form onSubmit={(e) => {
-                    addNewReceipt(e)
-                    setModalAddReceipt(false)
+                    addNewRecipe(e)
+                    setModalAddRecipe(false)
                 }}>
                     <InputMy
                         value={dish.title}
@@ -94,8 +94,8 @@ const AddReceipt = ({dishes, create}) => {
                         required
                     />
                     <InputMy
-                        value={dish.receipt}
-                        onChange={e => setDish({...dish, receipt: e.target.value})}
+                        value={dish.recipe}
+                        onChange={e => setDish({...dish, recipe: e.target.value})}
                         type="text"
                         placeholder="Рецепт"
                         required
@@ -109,4 +109,4 @@ const AddReceipt = ({dishes, create}) => {
     );
 };
 
-export default AddReceipt;
+export default AddRecipe;
