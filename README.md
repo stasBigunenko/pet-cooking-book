@@ -30,6 +30,10 @@ the json-server package:
 
 ### `npm install react-grid-carousel --save`
 
+## React-router-dom:
+
+### `npm install react-router-dom@5`
+
 # After all installations:
 
 You should start the server on port 3004 in the  terminal window with the following command:
@@ -40,4 +44,4 @@ It will launch the server on port 3004 (you can chose other port)
 To start a site you should enter the following command in the other terminal window:
 ### `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000/recipes](http://localhost:3000/recipes) to view it in your browser.
