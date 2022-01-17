@@ -37,21 +37,22 @@ const Comments = ({dishID}) => {
             Комментарии
         </button>
         <MyModal active={modalActive} setActive={setModalActive}>
-            <form onSubmit={e => {
+            <form
+                onSubmit={e => {
                 createComment(e)
                 setModalActive(false)
                 setCommentBody('')
                 setCommentAuthor('')
             }}>
                 <input
-                    style={{marginBottom:"12px"}}
+                    style={{marginBottom:"12px", justifySelf:"center", margin:"12px"}}
                     placeholder='Ваше имя'
                     value={commentAuthor}
                     onChange={e => setCommentAuthor(e.target.value)}
                     required={true}
                 />
                 <textarea
-                    style={{width:"650px", height:"100px"}}
+                    style={{width:"670px", height:"100px"}}
                     placeholder='Оставьте свой комментарий здесь...'
                     value={commentBody}
                     onChange={e => setCommentBody(e.target.value)}
