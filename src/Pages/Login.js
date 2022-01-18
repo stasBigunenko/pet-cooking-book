@@ -3,19 +3,20 @@ import InputMy from "../Components/Input/InputMy.js";
 import MyButton from "../Components/MyButton/MyButton.js";
 import {AuthContext} from "../Components/Context/AuthContext.js";
 import DishesService from "../API/DischesService.js";
-import Registration from "./Registration.js";
 import {useHistory} from "react-router-dom";
 
 const Login = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext)
-
+    // Context hook to check if the user logged
+    const {setIsAuth, setAuthor} = useContext(AuthContext)
+    // Hook of react-dom library
     const router = useHistory()
-
+    // Hook taht controll the state of the value
     const [user, setUser] = useState({
         name: '',
         password: '',
     })
 
+    // Login function
     async function login (e) {
         e.preventDefault()
         const usersDB = await DishesService.findUser()
@@ -25,6 +26,7 @@ const Login = () => {
             if(obj.password === user.password){
                 setIsAuth(true)
                 localStorage.setItem('auth', 'true')
+                setAuthor(user.name)
                 router.push(`/recipes`)
             } else {
                 alert('Wrong password')
@@ -56,7 +58,7 @@ const Login = () => {
                 <MyButton>Войти</MyButton>
             </form>
             <h2>
-                Еще не зарегистрирован?
+                Еще не зарегистрированы?
             </h2>
             <MyButton
                 style={{width: '100%'}}

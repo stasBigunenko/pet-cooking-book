@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom'
 import DishesService from "../API/DischesService.js";
 import classes from "../Components/Comments/Comments.module.css";
 import Comment from "../Components/Comment/Comment.js";
+import {AuthContext} from "../Components/Context/AuthContext.js";
 
 const RecipeIdComment = () => {
     //hooks returns an object of key/value pair
@@ -15,6 +16,8 @@ const RecipeIdComment = () => {
     const [commentBody, setCommentBody] = useState('')
     //Hook for controlling the state of the author comment
     const [commentAuthor, setCommentAuthor] = useState('')
+
+    const {author} = useContext(AuthContext)
 
     // Hook to load all the comments
     useEffect(() => {
@@ -30,7 +33,7 @@ const RecipeIdComment = () => {
     // Function taht add a new comment to the db
     async function createComment(e) {
         e.preventDefault()
-        const newComments = await DishesService.createComment(commentAuthor, commentBody, comments, params.id)
+        const newComments = await DishesService.createComment(author, commentBody, comments, params.id)
         setComments(newComments)
     }
 
@@ -42,13 +45,13 @@ const RecipeIdComment = () => {
                     setCommentBody('')
                     setCommentAuthor('')
                 }}>
-                <input
-                    style={{marginBottom:"12px", justifySelf:"center", margin:"12px"}}
-                    placeholder='Ваше имя'
-                    value={commentAuthor}
-                    onChange={e => setCommentAuthor(e.target.value)}
-                    required={true}
-                />
+                {/*<input*/}
+                {/*    style={{marginBottom:"12px", justifySelf:"center", margin:"12px"}}*/}
+                {/*    placeholder='Ваше имя'*/}
+                {/*    value={commentAuthor}*/}
+                {/*    onChange={e => setCommentAuthor(e.target.value)}*/}
+                {/*    required={true}*/}
+                {/*/>*/}
                 <textarea
                     style={{width:"670px", height:"100px", justifyContent:'center', alignContent:'center'}}
                     placeholder='Оставьте свой комментарий здесь...'

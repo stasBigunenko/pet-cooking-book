@@ -21,7 +21,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     const [photosById, setPhotosById] = useState([])
     // Hook to control the state with changed dish
     const [dishChange, setDishChange] = useState({})
-
+    // Context hook to check if the user logged
     const {isAuth} = useContext(AuthContext)
 
     // Function to receive data from db and insert in the inputs

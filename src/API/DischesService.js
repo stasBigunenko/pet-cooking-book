@@ -164,14 +164,14 @@ export default class DishesService {
     }
 
     // Method that create new comment in db
-    static async createComment(commentAuthor, commentBody, comments, dishID) {
+    static async createComment(author, commentBody, comments, dishID) {
         const comment = {}
         if (comments.length == 0) {
             comment.commentID = dishID + 0.1
         } else {
             comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
         }
-        comment.author = commentAuthor
+        comment.author = author
         comment.body = commentBody
         const newComms = [...comments, comment]
         await axios.put('http://localhost:3004/comments/' + dishID, {
@@ -181,12 +181,13 @@ export default class DishesService {
         return newComms
     }
 
+    // Method that receiving all users from db
     static async findUser(){
         const response = await axios.get('http://localhost:3004/users')
         return response.data
 
     }
-
+    // Method that create new user in db
     static async createUser(user) {
         const users = await axios.get('http://localhost:3004/users')
         user.id = Math.max.apply(Math, users.data.map(function(u) { return u.id; })) + 1

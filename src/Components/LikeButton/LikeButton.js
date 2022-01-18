@@ -7,9 +7,9 @@ import {AuthContext} from "../Context/AuthContext.js";
 const LikeButton = ({dish}) => {
     // Hook that controlling the state of likes
     const [likes, setLikes] = useState(dish)
-
+    // Hook to controll if the likeButton have been clicked already
     const [isliked, setIsLiked] = useState(false)
-
+    // Context hook to check if the user logged
     const {isAuth} = useContext(AuthContext)
 
     // Increment function - increase likes at every click

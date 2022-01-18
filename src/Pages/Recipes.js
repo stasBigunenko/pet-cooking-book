@@ -8,14 +8,13 @@ import InputMy from "../Components/Input/InputMy.js";
 import DishesService from "../API/DischesService.js";
 import AddRecipe from "../Components/AddRecipe/AddRecipe.js";
 import {AuthContext} from "../Components/Context/AuthContext.js";
-import {buttonClasses} from "@mui/material";
-import Login from "./Login.js";
 import {useHistory} from "react-router-dom";
 
 function Recipes () {
-
+    // Hook that allow to use needed value in all components
     const {isAuth, setIsAuth} = useContext(AuthContext)
 
+    // Hook of react-dom library
     const router = useHistory()
 
     // Hook for controlling the state of the receipts
@@ -82,6 +81,7 @@ function Recipes () {
         setDishes(swappedArray)
     }
 
+    // Logout function
     const logout= () => {
         router.push(`/recipes`)
         setIsAuth(false)
