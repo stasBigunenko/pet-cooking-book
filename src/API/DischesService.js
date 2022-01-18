@@ -180,4 +180,21 @@ export default class DishesService {
     })
         return newComms
     }
+
+    static async findUser(){
+        const response = await axios.get('http://localhost:3004/users')
+        return response.data
+
+    }
+
+    static async createUser(user) {
+        const users = await axios.get('http://localhost:3004/users')
+        user.id = Math.max.apply(Math, users.data.map(function(u) { return u.id; })) + 1
+        await axios.post(`http://localhost:3004/users`, {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            password: user.password
+        })
+    }
 }

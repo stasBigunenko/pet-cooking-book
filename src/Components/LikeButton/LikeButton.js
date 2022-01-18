@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from './LikeButton.module.css'
 import DishesService from "../../API/DischesService.js";
+import {AuthContext} from "../Context/AuthContext.js";
 
 // Component with like, dislike button and quantity
 const LikeButton = ({dish}) => {
@@ -8,6 +9,9 @@ const LikeButton = ({dish}) => {
     const [likes, setLikes] = useState(dish)
 
     const [isliked, setIsLiked] = useState(false)
+
+    const {isAuth} = useContext(AuthContext)
+
     // Increment function - increase likes at every click
     function increment() {
         setLikes({...likes, likes:likes.likes+1})
@@ -31,7 +35,9 @@ const LikeButton = ({dish}) => {
 
     return (
         <div>
-            <button
+            {isAuth
+                ?
+                (<button
                 className={classes.likeButton}
                 onClick={() => {
                     if (!isliked) {
@@ -42,7 +48,12 @@ const LikeButton = ({dish}) => {
             >
                 <img src={require('../../Images/Likes/like.png')} alt=''/>
             </button>
-            <button
+                ):(
+                    <button disabled={true}/>
+                )}
+            {isAuth
+                ?
+                (<button
                 className={classes.likeButton}
                 onClick={() => {
                     if (!isliked) {
@@ -52,7 +63,10 @@ const LikeButton = ({dish}) => {
             >
                 <img src={require('../../Images/Likes/dislike.png')} alt=''/>
             </button>
-            <p>{likes.likes}</p>
+                ):(
+                    <button disabled={true}/>
+                )}
+            <p>Likes: {likes.likes}</p>
         </div>
     );
 };

@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Redirect, Route, Switch} from "react-router-dom";
-import Recipes from "../../Pages/Recipes.js";
-import RecipeIdComment from "../../Pages/RecipeIdComment.js";
+import {routes} from "../Router/Routes.js";
 
 const AppRouter = () => {
+
     return (
         <Switch>
-            <Route exact path="/recipes">
-                <Recipes/>
-            </Route>
-            <Route exact path="/recipes/:id">
-                <RecipeIdComment/>
-            </Route>
-            <Redirect to="/recipes"/>
+            {routes.map(route =>
+                <Route
+                    component={route.component}
+                    path={route.path}
+                    exact={route.exact}
+                    key={route.path}
+                />
+            )}
         </Switch>
     );
 };

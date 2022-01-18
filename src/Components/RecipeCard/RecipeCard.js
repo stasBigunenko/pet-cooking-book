@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
@@ -7,6 +7,7 @@ import InputMy from "../Input/InputMy.js";
 import MyButton from "../MyButton/MyButton.js";
 import LikeButton from "../LikeButton/LikeButton.js";
 import Comments from "../Comments/Comments.js";
+import {AuthContext} from "../Context/AuthContext.js";
 
 // Component with the main functions and hooks
 const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
@@ -20,6 +21,8 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     const [photosById, setPhotosById] = useState([])
     // Hook to control the state with changed dish
     const [dishChange, setDishChange] = useState({})
+
+    const {isAuth} = useContext(AuthContext)
 
     // Function to receive data from db and insert in the inputs
     async function fetchRecipeByID() {
@@ -65,7 +68,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             url: newDish.url,
             likes: newDish.likes
         }
-        // return to the callback function changed recrecipeeipt
+        // return to the callback function changed recipe
         change(newRecipe)
     }
 
@@ -114,6 +117,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         onDrop={(e) => dropHandler(e, dish)}
         draggable={true}
         className={classes.card}
+        key={dish.id}
     >
         <img className={classes.card__img} src={require('../../Images/'+dish.url)} alt="" />
         <div
@@ -143,13 +147,18 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                 <p>{dishById.recipe}</p>
                 {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
             </MyModal>
-            <button
+            {isAuth
+                ?
+                (<button
                 className={classes.card__btn}
                 onClick={() => {
                     fetchRecipeByID()
                     setModal2Active(true)
                 }}
             >Редактировать</button>
+                ):(
+                    <button disabled={true}/>
+                )}
             <MyModal active={modal2Active} setActive={setModal2Active} >
                 <form onSubmit={(e) =>{
                     changeDishByID(e)
@@ -197,7 +206,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     </MyButton>
                 </form>
             </MyModal>
-            <button
+            {isAuth
+                ?
+                (<button
                 className={classes.card__btn2}
                 onClick={() => {
                     remove(dish)
@@ -206,6 +217,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             >
                 Удалить рецепт
             </button>
+                ):(
+                    <button disabled={true}/>
+                )}
             <Comments
                 dishID={dish.id}
             />
