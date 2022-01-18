@@ -1,10 +1,14 @@
 # A UI for a Cooking Book Pet-Project
 
-This app displays recipes wiht pictures and small description of the dish. Users can view detailed receipt by pushing the button.
+This app displays recipes with pictures and small description of the dish. All users can view detailed receipt by pushing the button.
 
-Also users can add, modify and delete a recipe.
+Also users can add, modify delete a recipe and leave a comment.
 
-Additionally you can put likes to recipes.
+Registration and Login forms
+
+Only logged users can add, modify and delete recipes.
+Only logged users can add comments to the recipe.
+Only logged users can leave like/dislike to the recipe.
 
 # Getting Started with Create React App
 
