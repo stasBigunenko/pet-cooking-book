@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
-import {Redirect, Route, Switch} from "react-router-dom";
+import React from 'react';
+import {Route, Switch} from "react-router-dom";
 import {routes} from "../Router/Routes.js";
 
 const AppRouter = () => {
-
+    // switch between all available routes of the project
     return (
         <Switch>
             {routes.map(route =>

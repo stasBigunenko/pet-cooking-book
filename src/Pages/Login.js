@@ -7,15 +7,17 @@ import Registration from "./Registration.js";
 import {useHistory} from "react-router-dom";
 
 const Login = () => {
+    // Context hook to check if the user logged
     const {isAuth, setIsAuth} = useContext(AuthContext)
-
+    // Hook of react-dom library
     const router = useHistory()
-
+    // Hook taht controll the state of the value
     const [user, setUser] = useState({
         name: '',
         password: '',
     })
 
+    // Login function
     async function login (e) {
         e.preventDefault()
         const usersDB = await DishesService.findUser()

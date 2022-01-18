@@ -181,12 +181,13 @@ export default class DishesService {
         return newComms
     }
 
+    // Method that receiving all users from db
     static async findUser(){
         const response = await axios.get('http://localhost:3004/users')
         return response.data
 
     }
-
+    // Method that create new user in db
     static async createUser(user) {
         const users = await axios.get('http://localhost:3004/users')
         user.id = Math.max.apply(Math, users.data.map(function(u) { return u.id; })) + 1

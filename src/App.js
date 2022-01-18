@@ -6,10 +6,11 @@ import {AuthContext} from "./Components/Context/AuthContext.js";
 import {useEffect, useState} from "react";
 
 function App() {
+    // Hook that controlling state of the value
     const [isAuth, setIsAuth] = useState(false)
-
+    // Hook that controlling state of the value
     const [isEntered, setIsEntered] = useState(true)
-
+    // Checking if user is already authorized
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)

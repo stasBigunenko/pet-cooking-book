@@ -6,10 +6,11 @@ import DishesService from "../API/DischesService.js";
 import {useHistory} from "react-router-dom";
 
 const Registration = () => {
+    // Context hook to check if the user logged
     const {isAuth, setIsAuth} = useContext(AuthContext)
-
+    // Hook of the react-dom library
     const router = useHistory()
-
+    // Hook that control the state of the value
     const [user, setUser] = useState({
         name: '',
         email:'',
@@ -17,6 +18,7 @@ const Registration = () => {
         confPassword:''
     })
 
+    // Registration function
     async function register (e) {
         e.preventDefault()
         if (user.password !== user.confPassword){

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import classes from "./Comments.module.css"
 import {useHistory} from "react-router-dom";
 
 
 const Comments = ({dishID}) => {
-
+    // Hook of react-dom library
     const router = useHistory()
 
     return (
