@@ -4,6 +4,7 @@ import MyButton from "../Components/MyButton/MyButton.js";
 import {AuthContext} from "../Components/Context/AuthContext.js";
 import DishesService from "../API/DischesService.js";
 import {useHistory} from "react-router-dom";
+import classes from "./Login.module.css"
 
 const Login = () => {
     // Context hook to check if the user logged
@@ -37,10 +38,10 @@ const Login = () => {
     }
 
     return (
-        <div>
-
+        <div className={classes.log}>
             <h1>Старница для логина</h1>
-            <form onSubmit={(e) => {
+            <form
+                onSubmit={(e) => {
                 login(e)
             }}>
                 <InputMy
@@ -56,7 +57,13 @@ const Login = () => {
                     placeholder="Введите пароль"
                 />
                 <MyButton>Войти</MyButton>
+                <MyButton onClick={() => {
+                    router.push(`/recipes`)
+                }}>
+                    Вернутся
+                </MyButton>
             </form>
+
             <h2>
                 Еще не зарегистрированы?
             </h2>
