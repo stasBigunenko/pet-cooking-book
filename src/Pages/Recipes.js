@@ -2,13 +2,21 @@ import Title from "../Components/Title/Title.js";
 import * as React from "react";
 import MyButton from "../Components/MyButton/MyButton.js";
 import MainText from "../Components/MainText/MainText.js";
-import {useEffect, useMemo, useState} from "react";
+import {useContext, useEffect, useMemo, useState} from "react";
 import DishList from "../Components/DishList/DishList.js";
 import InputMy from "../Components/Input/InputMy.js";
 import DishesService from "../API/DischesService.js";
 import AddRecipe from "../Components/AddRecipe/AddRecipe.js";
+import {AuthContext} from "../Components/Context/AuthContext.js";
+import {buttonClasses} from "@mui/material";
+import Login from "./Login.js";
+import {useHistory} from "react-router-dom";
 
 function Recipes () {
+
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+
+    const router = useHistory()
 
     // Hook for controlling the state of the receipts
     const [dishes, setDishes] = useState([])
@@ -74,12 +82,33 @@ function Recipes () {
         setDishes(swappedArray)
     }
 
+    const logout= () => {
+        router.push(`/recipes`)
+        setIsAuth(false)
+        localStorage.removeItem('auth')
+    }
+
     return (
         <div>
             <Title/>
-            <MyButton style={{width: '100%'} }>
+            {!isAuth
+                ?
+                (<MyButton
+                style={{width: '100%'}}
+                onClick={() => {
+                    router.push(`/login`)
+                }}
+                >
                 Login
-            </MyButton>
+                </MyButton>
+                ):(
+                    <MyButton
+                        style={{width: '100%'}}
+                        onClick={logout}
+                    >
+                        Logout
+                    </MyButton>
+                )}
             <MainText/>
             <InputMy
                 value={searchQuery}

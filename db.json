@@ -296,5 +296,19 @@
         }
       ]
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "sss",
+      "email": "sss@mail.com",
+      "password": "sss"
+    },
+    {
+      "id": 2,
+      "name": "ыы",
+      "email": "ыы",
+      "password": "ыы"
+    }
   ]
 }

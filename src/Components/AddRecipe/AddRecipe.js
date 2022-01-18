@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import MyButton from "../MyButton/MyButton.js";
 import MyModal from "../MyModal/MyModal.js";
 import classes from "./AddRecipe.module.css";
 import InputMy from "../Input/InputMy.js";
 import DishesService from "../../API/DischesService.js";
+import {AuthContext} from "../Context/AuthContext.js";
 
 // Component that create new recipe
 const AddRecipe = ({dishes, create}) => {
+
+    const {isAuth} = useContext(AuthContext)
 
     // Hook useState to set up initial value
     const [dish, setDish] = useState({
@@ -51,13 +54,19 @@ const AddRecipe = ({dishes, create}) => {
 
     return (
         <div>
-            <MyButton
-                className={classes.addRec__btn}
-                onClick={() => {
-                    setModalAddRecipe(true)
-                }}>
-                Добавить рецепт
-            </MyButton>
+            {isAuth
+                ?
+                (<button
+                        className={classes.addRec__btn}
+                        onClick={() => {
+                            setModalAddRecipe(true)
+                        }}
+                    >
+                        Добавить рецепт
+                    </button>
+                ):(
+                    <button disabled={true}/>
+                )}
             <MyModal active={modalAddRecipe} setActive={setModalAddRecipe} >
                 <form onSubmit={(e) => {
                     addNewRecipe(e)
