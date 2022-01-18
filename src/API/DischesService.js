@@ -164,14 +164,14 @@ export default class DishesService {
     }
 
     // Method that create new comment in db
-    static async createComment(commentAuthor, commentBody, comments, dishID) {
+    static async createComment(author, commentBody, comments, dishID) {
         const comment = {}
         if (comments.length == 0) {
             comment.commentID = dishID + 0.1
         } else {
             comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
         }
-        comment.author = commentAuthor
+        comment.author = author
         comment.body = commentBody
         const newComms = [...comments, comment]
         await axios.put('http://localhost:3004/comments/' + dishID, {

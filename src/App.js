@@ -10,6 +10,8 @@ function App() {
     const [isAuth, setIsAuth] = useState(false)
     // Hook that controlling state of the value
     const [isEntered, setIsEntered] = useState(true)
+
+    const[author, setAuthor] = useState('')
     // Checking if user is already authorized
     useEffect(() => {
         if(localStorage.getItem('auth')) {
@@ -22,7 +24,9 @@ function App() {
       <AuthContext.Provider value={{
           isAuth,
           setIsAuth,
-          isEntered
+          isEntered,
+          author,
+          setAuthor
       }}>
           <Router>
               <AppRouter/>
