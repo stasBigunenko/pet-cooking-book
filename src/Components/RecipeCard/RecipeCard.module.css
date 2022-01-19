@@ -1,21 +1,22 @@
 .card {
     height: auto;
-    width: 33%;
-    /*display: flex;*/
+    display: flex;
     padding: 15px;
     border-radius: 2px;
     border: solid teal;
     margin-top: 15px;
-    /*background-color: rgba(255, 255, 255, 0.5);*/
     cursor: grab;
     flex-wrap: wrap;
-    flex-basis: 33%;
+    flex-basis: 30%;
     flex-direction: row;
-
+    justify-content: center;
 }
 
 .card:hover {
     border: solid indianred;
+    background-color: lightcyan;
+    transform: scale(1.2);
+    transition-duration: 0.1s;
 }
 
 .card__content {
