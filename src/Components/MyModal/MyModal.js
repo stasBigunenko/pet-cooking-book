@@ -4,8 +4,8 @@ import classes from './MyModal.module.css'
 // Created component which can be reused in the whole project
 const MyModal = ({active, setActive, children}) => {
 
-    const rootClasses = [classes.modal]
-    const rootContClasses = [classes.modal__content]
+    const rootClasses = [classes.myModal]
+    const rootContClasses = [classes.myModal__content]
 
     if (active) {
         rootClasses.push(classes.active)
@@ -18,7 +18,8 @@ const MyModal = ({active, setActive, children}) => {
             onClick={() => setActive(false)}
         >
             <div
-                className={rootContClasses.join(' ')}
+                className={classes.myModalContent}
+                // className={rootContClasses.join(' ')}
                 onClick={e => e.stopPropagation()}
                 >
                 {children}

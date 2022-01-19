@@ -68,7 +68,7 @@ const Login = () => {
                 Еще не зарегистрированы?
             </h2>
             <MyButton
-                style={{width: '100%'}}
+                style={{width: '16%'}}
                 onClick={() => {
                     router.push(`/registration`)
                 }}
