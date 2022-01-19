@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {routes} from "../Router/Routes.js";
 
 const AppRouter = () => {
@@ -14,6 +14,7 @@ const AppRouter = () => {
                     key={route.path}
                 />
             )}
+            <Redirect to='/recipes'/>
         </Switch>
     );
 };

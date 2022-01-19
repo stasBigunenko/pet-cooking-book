@@ -1,18 +1,18 @@
-/*для всех добавим общий стиль*/
+/*!*для всех добавим общий стиль*!*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*Стиль для нашего root*/
-#root {
-    display: flex;
-    align-items: center;
-    /*justify-content: center;*/
-    /*flex-direction: column;*/
-}
+/*!*Стиль для нашего root*!*/
+/*#root {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    !*justify-content: center;*!*/
+/*    !*flex-direction: column;*!*/
+/*}*/
 
-.App {
-    width: 800px;
-}
+/*.App {*/
+/*    width: 100px;*/
+/*}*/

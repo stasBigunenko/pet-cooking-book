@@ -119,6 +119,9 @@ function Recipes () {
                 dishes={dishes}
                 create={createRecipe}
             />
+            <h1 style={{marginTop: '20px', textAlign: 'center'}}>
+                Наши рецепты
+            </h1>
             <DishList
                 change={changeRecipe}
                 remove={removeRecipe}

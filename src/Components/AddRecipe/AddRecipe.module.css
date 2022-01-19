@@ -2,7 +2,7 @@
     margin-top: 5px;
     padding: 15px 15px;
     color: teal;
-    font-size: 14px;
+    font-size: 15px;
     background: transparent;
     border-radius: 1px;
     cursor: pointer;
@@ -11,6 +11,7 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    width: 100%;
 }
 
 .addRec__btn:hover {

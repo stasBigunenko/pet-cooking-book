@@ -1,0 +1,6 @@
+.dishlist {
+    border: 1px solid teal;
+    display: flex;
+    /*flex-direction: row;*/
+    justify-content: center;
+}

@@ -38,7 +38,7 @@ const RecipeIdComment = () => {
     }
 
     return (
-        <div style={{justifyContent:'center', alignContent:'center'}}>
+        <div >
             <form
                 onSubmit={e => {
                     createComment(e)
@@ -53,7 +53,7 @@ const RecipeIdComment = () => {
                 {/*    required={true}*/}
                 {/*/>*/}
                 <textarea
-                    style={{width:"670px", height:"100px", justifyContent:'center', alignContent:'center'}}
+                    style={{display:'flex', width:"670px", height:"100px", justifyContent:'center', alignContent:'center'}}
                     placeholder='Оставьте свой комментарий здесь...'
                     value={commentBody}
                     onChange={e => setCommentBody(e.target.value)}

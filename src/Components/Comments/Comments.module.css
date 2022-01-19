@@ -9,10 +9,10 @@
     border-radius: 12px;
     cursor: pointer;
     font-weight: bold;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*align-content: center;*/
-    /*align-self: center;*/
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
 }
 
 .comments__btn:hover {
