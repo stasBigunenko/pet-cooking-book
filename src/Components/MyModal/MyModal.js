@@ -5,7 +5,7 @@ import classes from './MyModal.module.css'
 const MyModal = ({active, setActive, children}) => {
 
     const rootClasses = [classes.myModal]
-    const rootContClasses = [classes.myModal__content]
+    const rootContClasses = [classes.myModalContent]
 
     if (active) {
         rootClasses.push(classes.active)
@@ -18,8 +18,8 @@ const MyModal = ({active, setActive, children}) => {
             onClick={() => setActive(false)}
         >
             <div
-                className={classes.myModalContent}
-                // className={rootContClasses.join(' ')}
+                // className={classes.myModalContent}
+                className={rootContClasses.join(' ')}
                 onClick={e => e.stopPropagation()}
                 >
                 {children}

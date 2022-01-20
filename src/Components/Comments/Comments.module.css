@@ -3,7 +3,7 @@
     margin-top: 5px;
     margin-right: 50px;
     padding: 15px 15px;
-    color: #6969cb;
+    color: blue;
     font-size: 14px;
     background: transparent;
     border-radius: 12px;
@@ -13,12 +13,13 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid 1px blue;
 }
 
 .comments__btn:hover {
     border: 2px solid royalblue;
-    background-color: lightblue;
-    color: royalblue;
+    background-color: blue;
+    color: white;
     transition-duration: 0.5s;
 }
 
@@ -26,7 +27,7 @@
     width: auto;
     margin-top: 5px;
     padding: 5px;
-    color: #6969cb;
+    color: blue;
     font-size: 14px;
     background: transparent;
     border-radius: 5px;
@@ -36,10 +37,11 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid 1px blue;
 }
 
 .comments__btn2:hover {
-    border: 2px solid blue;
+    border: 1px solid blue;
     background-color: blue;
     color: white;
     transition-duration: 0.5s;
@@ -49,7 +51,7 @@
     width: auto;
     margin-top: 5px;
     padding: 5px;
-    color: lightcoral;
+    color: red;
     font-size: 14px;
     background: transparent;
     border-radius: 5px;
@@ -59,11 +61,11 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid 1px red
 }
 
 .comments__btn3:hover {
-    border: 2px solid darkred;
-    background-color: lightcoral;
+    background-color: red;
     color: white;
     transition-duration: 0.5s;
 }

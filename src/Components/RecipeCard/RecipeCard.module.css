@@ -2,8 +2,8 @@
     height: auto;
     display: flex;
     padding: 15px;
-    border-radius: 2px;
-    border: solid teal;
+    border-radius: 10px;
+    border: solid lightblue;
     margin-top: 15px;
     cursor: grab;
     flex-wrap: wrap;
@@ -13,7 +13,7 @@
 }
 
 .card:hover {
-    border: solid indianred;
+    border: solid lightskyblue;
     background-color: lightcyan;
 }
 
@@ -36,29 +36,30 @@
 .card__btn {
     margin-top: 5px;
     padding: 15px 15px;
-    color: teal;
+    color: blue;
     font-size: 14px;
     background: transparent;
-    border-radius: 1px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     justify-content: center;
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid blue 1px;
 }
 
 .card__btn:hover {
     border: 2px solid royalblue;
-    background-color: lightblue;
-    color: royalblue;
+    background-color: blue;
+    color: white;
     transition-duration: 0.5s;
 }
 
 .card__btn2 {
     margin-top: 5px;
     padding: 15px 15px;
-    color: lightcoral;
+    color: red;
     font-size: 14px;
     background: transparent;
     border-radius: 1px;
@@ -68,11 +69,12 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid 1px red;
 }
 
 .card__btn2:hover {
     border: 2px solid indianred;
-    background-color: lightcoral;
-    color: darkred;
+    background-color: red;
+    color: white;
     transition-duration: 0.5s;
 }
