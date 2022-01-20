@@ -142,10 +142,16 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     fetchPhotosById()
                 }}
             >Полный рецепт</button>
-            <MyModal active={modalActive} setActive={setModalActive} >
+            <MyModal
+                active={modalActive}
+                setActive={setModalActive}
+            >
                 <strong>{dishById.title}</strong>
                 <p>{dishById.recipe}</p>
-                {photosById.length >0 && <Gallery photos={photosById} id ={dish.id}/>}
+                {photosById.length >0 && <Gallery
+                    photos={photosById}
+                    id ={dish.id}
+                />}
             </MyModal>
             {isAuth
                 ?

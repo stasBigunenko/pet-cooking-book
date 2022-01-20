@@ -13,7 +13,7 @@
 }
 
 .card:hover {
-    border: solid lightskyblue;
+    border: solid dodgerblue;
     background-color: lightcyan;
 }
 
@@ -35,7 +35,7 @@
 
 .card__btn {
     padding: 15px 15px;
-    color: blue;
+    color: dodgerblue;
     font-size: 14px;
     background: transparent;
     border-radius: 5px;
@@ -45,13 +45,13 @@
     align-items: center;
     align-content: center;
     align-self: center;
-    border: solid blue 1px;
+    border: solid dodgerblue 1px;
     margin: 10px;
 }
 
 .card__btn:hover {
-    border: 2px solid royalblue;
-    background-color: blue;
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
     color: white;
     transition-duration: 0.5s;
 }

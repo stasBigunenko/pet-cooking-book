@@ -64,17 +64,17 @@ const Login = () => {
                 </MyButton>
             </form>
 
-            <h2>
+            <h2 style={{color:"red"}}>
                 Еще не зарегистрированы?
+                <MyButton
+                    onClick={() => {
+                        router.push(`/registration`)
+                    }}
+                >
+                    Регистрация
+                </MyButton>
             </h2>
-            <MyButton
-                style={{width: '16%'}}
-                onClick={() => {
-                    router.push(`/registration`)
-                }}
-            >
-                Регистрация
-            </MyButton>
+
         </div>
     );
 };

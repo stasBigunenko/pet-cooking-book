@@ -3,18 +3,18 @@
     /*margin-top: 5px;*/
     margin-left: 162px;
     padding: 15px 15px;
-    color: blue;
+    color: dodgerblue;
     font-size: 14px;
     background: transparent;
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
-    border: solid 1px blue;
+    border: solid 1px dodgerblue;
 }
 
 .comments__btn:hover {
-    border: 2px solid royalblue;
-    background-color: blue;
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
     color: white;
     transition-duration: 0.5s;
 }
@@ -23,7 +23,7 @@
     width: auto;
     margin-top: 5px;
     padding: 5px;
-    color: blue;
+    color: dodgerblue;
     font-size: 14px;
     background: transparent;
     border-radius: 5px;
@@ -33,12 +33,12 @@
     align-items: center;
     align-content: center;
     align-self: center;
-    border: solid 1px blue;
+    border: solid 1px dodgerblue;
 }
 
 .comments__btn2:hover {
-    border: 1px solid blue;
-    background-color: blue;
+    border: 1px solid dodgerblue;
+    background-color: dodgerblue;
     color: white;
     transition-duration: 0.5s;
 }

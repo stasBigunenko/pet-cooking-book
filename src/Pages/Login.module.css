@@ -1,5 +1,9 @@
-/*.log {*/
-/*    display: inline-block;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*}*/
+.log {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    color:dodgerblue;
+}
