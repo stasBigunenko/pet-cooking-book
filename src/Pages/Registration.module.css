@@ -1,11 +1,8 @@
 .reg {
     display: flex;
     flex-direction: column;
-    /*flex-wrap: wrap;*/
-    /*color:red;*/
     background-color: transparent;
-    /*text-align: center;*/
     align-items: center;
     justify-content: center;
-
+    color:dodgerblue;
 }

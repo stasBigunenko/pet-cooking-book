@@ -1,5 +1,10 @@
 .log {
-    flex-direction: column;
+    /*flex-direction: column;*/
     color:dodgerblue;
+    /*background-color: transparent;*/
+    display: flex;
+    flex-direction: column;
     background-color: transparent;
+    align-items: center;
+    justify-content: center;
 }

@@ -66,7 +66,9 @@ const LikeButton = ({dish}) => {
                 ):(
                     <button disabled={true}/>
                 )}
-            <p style={{background: "white"}}>Likes: {likes.likes}</p>
+            <p
+                style={{color:"dodgerblue", background:"white", fontWeight: "bold"}}
+            >Likes: {likes.likes}</p>
         </div>
     );
 };

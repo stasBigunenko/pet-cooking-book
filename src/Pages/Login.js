@@ -39,9 +39,9 @@ const Login = () => {
 
     return (
         <div className={classes.log}>
-            <h1 style={{textAlign:"center"}}>Старница для логина</h1>
+            <h1 style={{textAlign:"center", color:"dodgeblue"}}>Старница для логина</h1>
             <form
-                style={{flexDirection:'column'}}
+                className={classes.log}
                 onSubmit={(e) => {
                 login(e)
             }}>
@@ -66,7 +66,6 @@ const Login = () => {
                     Вернутся
                 </MyButton>
             </form>
-
             <h2 style={{color:"red"}}>
                 Еще не зарегистрированы?
                 <MyButton

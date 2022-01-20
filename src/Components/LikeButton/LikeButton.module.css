@@ -10,3 +10,9 @@
     transform: scale(1.2);
     transition-duration: 0.5s;
 }
+
+.myP {
+    font-family: "Bauhaus 93";
+    font-size: 40px;
+    font-weight: bold;
+}
