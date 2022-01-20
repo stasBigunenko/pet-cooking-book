@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from './RecipeCard.module.css'
 import MyModal from "../MyModal/MyModal.js";
 import DishesService from "../../API/DischesService.js";
@@ -24,11 +24,13 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
     // Context hook to check if the user logged
     const {isAuth} = useContext(AuthContext)
 
+    let oldRecipe
+
     // Function to receive data from db and insert in the inputs
     async function fetchRecipeByID() {
-        const dishChange = await DishesService.getRecipeByID(dish.id)
+        oldRecipe = await DishesService.getRecipeByID(dish.id)
         // Changed the state of the hook
-        setDishChange(dishChange)
+        setDishChange(oldRecipe)
     }
 
     // Function to receive data from db from the 2d table
@@ -242,7 +244,6 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     <button disabled={true}/>
                 )}
             <Comments
-                // style={{marginRight:"100px"}}
                 dishID={dish.id}
             />
             <LikeButton dish={dish} />

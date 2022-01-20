@@ -46,12 +46,14 @@ const Login = () => {
                 login(e)
             }}>
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.name}
                     onChange={e => setUser({...user, name: e.target.value})}
                     type="text"
                     placeholder="Введите логин"
                 />
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.password}
                     onChange={e => setUser({...user, password: e.target.value})}
                     type="password"

@@ -4,6 +4,7 @@ import MyButton from "../Components/MyButton/MyButton.js";
 import {AuthContext} from "../Components/Context/AuthContext.js";
 import DishesService from "../API/DischesService.js";
 import {useHistory} from "react-router-dom";
+import classes from "./Registration.module.css"
 
 const Registration = () => {
     // Context hook to check if the user logged
@@ -30,12 +31,15 @@ const Registration = () => {
     }
 
     return (
-        <div>
+        <div className={classes.reg}>
             <h1>Старница для регистрации</h1>
-            <form onSubmit={(e) => {
+            <form
+                style={{backgroundColor:"red", flexDirection:"column"}}
+                onSubmit={(e) => {
                 register(e)
             }}>
                 <InputMy
+                    style={{width:"200px", height:"25px", flexDirection:"column"}}
                     value={user.name}
                     onChange={e => setUser({...user, name: e.target.value})}
                     type="text"
@@ -43,6 +47,7 @@ const Registration = () => {
                     required
                 />
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.email}
                     onChange={e => setUser({...user, email: e.target.value})}
                     type="email"
@@ -50,6 +55,7 @@ const Registration = () => {
                     required
                 />
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.password}
                     onChange={e => setUser({...user, password: e.target.value})}
                     type="password"
@@ -57,15 +63,19 @@ const Registration = () => {
                     required
                 />
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.confPassword}
                     onChange={e => setUser({...user, confPassword: e.target.value})}
                     type="password"
                     placeholder="Подтвердите пароль"
                     required
                 />
-                <MyButton>Зарегистрироваться</MyButton>
+                <MyButton
+                    style={{alignItems:"center"}}
+                >Зарегистрироваться</MyButton>
             </form>
-            <MyButton onClick={() =>{
+            <MyButton
+                onClick={() =>{
                 router.push(`/recipes`)
             }}>
                 Отменить

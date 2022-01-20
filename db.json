@@ -2,7 +2,7 @@
   "dishes": [
     {
       "id": 1,
-      "order": 1,
+      "order": 2,
       "title": "Вареные яйца вкрутую",
       "cookingTime": "10",
       "calories": 120,
@@ -12,13 +12,13 @@
     },
     {
       "id": 2,
-      "order": 2,
+      "order": 1,
       "title": "Блины тонкие",
       "cookingTime": "40",
       "calories": 1000,
       "description": "Тонкие же блины пришли к нам из Франции, и стали называться блинчиками, они могут быть как с начинкой, так и без неё, ведь только в тонкий блинчик вы сможете завернуть начинку. И хотя со словом, вроде, всё понятно, я иногда по-прежнему продолжаю называть тонкие блинчики — блинами.",
       "url": "pancakes.png",
-      "likes": 8
+      "likes": 7
     },
     {
       "id": 3,
@@ -68,7 +68,7 @@
       "calories": 800,
       "description": "Блюдо каталонской кухни из печеных баклажанов, сладкого перца (обязательно) и лука с помидорами (по выбору).",
       "url": "vegetables.png",
-      "likes": 9
+      "likes": 8
     }
   ],
   "dish": [
@@ -217,7 +217,6 @@
       ]
     },
     {
-      "id": 2,
       "comm": [
         {
           "commentID": 2.1,
@@ -228,13 +227,9 @@
           "commentID": 2.2,
           "author": "Вася",
           "body": "dsa"
-        },
-        {
-          "commentID": 2.3000000000000003,
-          "author": "",
-          "body": "fdssfddfsssssssssssssssssssssssssssssdsf\nsfddddddddddddddddddd\nsdffffffffffffffffffffffff\nsdfffffffffffffff\nfsdddddddddd"
         }
-      ]
+      ],
+      "id": 2
     },
     {
       "id": 3,

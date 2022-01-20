@@ -101,7 +101,6 @@ const AddRecipe = ({dishes, create}) => {
                         style={{background: "white", width:"auto", margin:"5px", border: "1px solid dodgerblue", display:"flex"}}
                         value={dish.description}
                         onChange={e => setDish({...dish, description: e.target.value})}
-                        type="text"
                         placeholder="Описание блюда"
                         required
                     />
@@ -109,7 +108,6 @@ const AddRecipe = ({dishes, create}) => {
                         style={{background: "white", width:"auto", margin:"5px", border: "1px solid dodgerblue", display:"flex"}}
                         value={dish.recipe}
                         onChange={e => setDish({...dish, recipe: e.target.value})}
-                        type="text"
                         placeholder="Рецепт"
                         required
                     />
