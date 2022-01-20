@@ -41,7 +41,7 @@ const Login = () => {
         <div className={classes.log}>
             <h1 style={{textAlign:"center"}}>Старница для логина</h1>
             <form
-                style={{justifyContent:'center', alignItems:'center', alignSelf:"center"}}
+                style={{flexDirection:'column'}}
                 onSubmit={(e) => {
                 login(e)
             }}>

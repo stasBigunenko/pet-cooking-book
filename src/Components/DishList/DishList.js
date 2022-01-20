@@ -14,7 +14,7 @@ const DishList = ({dishes, remove, change, dnd}) => {
         >
             {dishes.map(dish =>
                 <RecipeCard
-                    className={classes.dishlist}
+                    // className={classes.dishlist}
                     change={change}
                     remove={remove}
                     dish={dish}

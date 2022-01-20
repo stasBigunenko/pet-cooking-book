@@ -1,9 +1,8 @@
-import './App.css'
-import * as React from "react";
+import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
 import AppRouter from "./Components/AppRouter/AppRouter.js";
 import {AuthContext} from "./Components/Context/AuthContext.js";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 function App() {
     // Hook that controlling state of the value
@@ -21,17 +20,18 @@ function App() {
     },[])
 
   return (
-      <AuthContext.Provider value={{
-          isAuth,
-          setIsAuth,
-          isEntered,
-          author,
-          setAuthor
-      }}>
-          <Router>
-              <AppRouter/>
-          </Router>
-      </AuthContext.Provider>
+          <AuthContext.Provider
+              value={{
+                isAuth,
+                setIsAuth,
+                isEntered,
+                author,
+                setAuthor
+          }}>
+              <Router>
+                  <AppRouter/>
+              </Router>
+          </AuthContext.Provider>
   );
 }
 

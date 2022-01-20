@@ -111,6 +111,7 @@ function Recipes () {
                 )}
             <MainText/>
             <InputMy
+                style={{width:"15%", height:"25px"}}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Поиск..."
