@@ -34,7 +34,7 @@ const LikeButton = ({dish}) => {
     }
 
     return (
-        <div>
+        <div style={{background: "white"}}>
             {isAuth
                 ?
                 (<button
@@ -66,7 +66,9 @@ const LikeButton = ({dish}) => {
                 ):(
                     <button disabled={true}/>
                 )}
-            <p>Likes: {likes.likes}</p>
+            <p
+                style={{color:"dodgerblue", background:"white", fontWeight: "bold"}}
+            >Likes: {likes.likes}</p>
         </div>
     );
 };

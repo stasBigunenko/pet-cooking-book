@@ -5,7 +5,7 @@ import classes from './Title.module.css'
 const Title = () => {
     return (
             <div className={classes.Title}>
-                <h1>Welcome to our new Cooking Book</h1>
+                <h1>Книга рецептов</h1>
             </div>
     );
 };

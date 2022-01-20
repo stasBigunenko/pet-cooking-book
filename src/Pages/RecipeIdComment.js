@@ -53,11 +53,12 @@ const RecipeIdComment = () => {
                 {/*    required={true}*/}
                 {/*/>*/}
                 <textarea
-                    style={{display:'flex', width:"670px", height:"100px", justifyContent:'center', alignContent:'center'}}
+                    style={{display:'flex', width:"670px", height:"100px", justifyContent:'center', alignContent:'center', background: "white"}}
                     placeholder='Оставьте свой комментарий здесь...'
                     value={commentBody}
                     onChange={e => setCommentBody(e.target.value)}
                     required={true}
+
                 />
                 <input
                     className={classes.comments__btn2}
@@ -73,7 +74,7 @@ const RecipeIdComment = () => {
                     }}
                 > Вернуться к списку рецептов </button>
             </form>
-            <h3 style={{textAlign:'center', marginTop:'15px'}}>
+            <h3 style={{textAlign:'center', marginTop:'15px', color:"black"}}>
                 Комментарии к рецепту
             </h3>
             {comments.map(comment =>

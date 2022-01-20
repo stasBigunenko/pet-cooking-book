@@ -1,18 +1,6 @@
-/*!*для всех добавим общий стиль*!*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-image: url('./Images/background/background.jpg');
 }
-
-/*!*Стиль для нашего root*!*/
-/*#root {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    !*justify-content: center;*!*/
-/*    !*flex-direction: column;*!*/
-/*}*/
-
-/*.App {*/
-/*    width: 100px;*/
-/*}*/

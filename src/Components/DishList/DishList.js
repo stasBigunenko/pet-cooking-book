@@ -6,14 +6,15 @@ import classes from "./DishList.module.css"
 const DishList = ({dishes, remove, change, dnd}) => {
 
     return (
-        <div style={{
+        <div
+            style={{
             display:"flex",
             flexWrap:"wrap",
-            justifyContent:"space-around"
-        }}>
+            justifyContent:"space-around"}}
+        >
             {dishes.map(dish =>
                 <RecipeCard
-                    className={classes.dishlist}
+                    // className={classes.dishlist}
                     change={change}
                     remove={remove}
                     dish={dish}

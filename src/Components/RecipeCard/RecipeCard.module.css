@@ -2,67 +2,67 @@
     height: auto;
     display: flex;
     padding: 15px;
-    border-radius: 2px;
-    border: solid teal;
+    border-radius: 10px;
+    border: solid lightblue;
     margin-top: 15px;
     cursor: grab;
     flex-wrap: wrap;
     flex-basis: 30%;
     flex-direction: row;
     justify-content: center;
+    background: white;
+    align-items: center;
+    align-content: center;
 }
 
 .card:hover {
-    border: solid indianred;
-    background-color: lightcyan;
-    transform: scale(1.2);
-    transition-duration: 0.1s;
+    border: solid 3px dodgerblue;
 }
 
 .card__content {
     justify-content: space-between ;
     padding: 15px;
+    background: white;
 }
 
 .card__img {
     height: 220px;
     width: 270px;
     justify-content: center;
-    /*overflow: hidden;*/
 }
 .card__img:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
     transition-duration: 0.5s;
 }
 
 .card__btn {
-    margin-top: 5px;
     padding: 15px 15px;
-    color: teal;
+    color: dodgerblue;
     font-size: 14px;
-    background: transparent;
-    border-radius: 1px;
+    background: white;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     justify-content: center;
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid dodgerblue 1px;
+    margin: 10px;
 }
 
 .card__btn:hover {
-    border: 2px solid royalblue;
-    background-color: lightblue;
-    color: royalblue;
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
+    color: white;
     transition-duration: 0.5s;
 }
 
 .card__btn2 {
-    margin-top: 5px;
     padding: 15px 15px;
-    color: lightcoral;
+    color: red;
     font-size: 14px;
-    background: transparent;
+    background: white;
     border-radius: 1px;
     cursor: pointer;
     font-weight: bold;
@@ -70,11 +70,13 @@
     align-items: center;
     align-content: center;
     align-self: center;
+    border: solid 1px red;
+    margin: 10px;
 }
 
 .card__btn2:hover {
     border: 2px solid indianred;
-    background-color: lightcoral;
-    color: darkred;
+    background-color: red;
+    color: white;
     transition-duration: 0.5s;
 }

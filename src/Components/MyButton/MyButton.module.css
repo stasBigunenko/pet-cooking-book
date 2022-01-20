@@ -1,15 +1,22 @@
 .myBtn {
-    margin-top: 5px;
+    margin: 5px;
     padding: 15px 15px;
-    color: teal;
+    color: dodgerblue;
     font-size: 14px;
-    background: transparent;
-    border-radius: 1px solid teal;
+    background: white;
+    border-radius: 1px;
+    border: 1px solid dodgerblue;
     cursor: pointer;
     font-weight: bold;
-    /*text-align: center;*/
-    /*align-self: center;*/
-    /*align-items: center;*/
-    /*align-content: center;*/
+    align-self: center;
+    justify-content: center;
+    display: flex;
+}
+
+.myBtn:hover {
+    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
+    color: white;
+    transition-duration: 0.5s;
 }
 

@@ -39,18 +39,21 @@ const Login = () => {
 
     return (
         <div className={classes.log}>
-            <h1>Старница для логина</h1>
+            <h1 style={{textAlign:"center", color:"dodgeblue"}}>Старница для логина</h1>
             <form
+                className={classes.log}
                 onSubmit={(e) => {
                 login(e)
             }}>
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.name}
                     onChange={e => setUser({...user, name: e.target.value})}
                     type="text"
                     placeholder="Введите логин"
                 />
                 <InputMy
+                    style={{width:"200px", height:"25px"}}
                     value={user.password}
                     onChange={e => setUser({...user, password: e.target.value})}
                     type="password"
@@ -63,18 +66,17 @@ const Login = () => {
                     Вернутся
                 </MyButton>
             </form>
-
-            <h2>
+            <h2 style={{color:"red"}}>
                 Еще не зарегистрированы?
+                <MyButton
+                    onClick={() => {
+                        router.push(`/registration`)
+                    }}
+                >
+                    Регистрация
+                </MyButton>
             </h2>
-            <MyButton
-                style={{width: '100%'}}
-                onClick={() => {
-                    router.push(`/registration`)
-                }}
-            >
-                Регистрация
-            </MyButton>
+
         </div>
     );
 };
