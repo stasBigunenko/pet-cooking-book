@@ -34,7 +34,8 @@ const Registration = () => {
         <div className={classes.reg}>
             <h1>Старница для регистрации</h1>
             <form
-                style={{backgroundColor:"red", flexDirection:"column"}}
+                className={classes.reg}
+                // style={{backgroundColor:"red", flexDirection:"column"}}
                 onSubmit={(e) => {
                 register(e)
             }}>
@@ -71,7 +72,7 @@ const Registration = () => {
                     required
                 />
                 <MyButton
-                    style={{alignItems:"center"}}
+                    // style={{alignItems:"center"}}
                 >Зарегистрироваться</MyButton>
             </form>
             <MyButton

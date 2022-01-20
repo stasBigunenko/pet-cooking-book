@@ -1,7 +1,11 @@
 .reg {
     display: flex;
     flex-direction: column;
-    color:red;
+    /*flex-wrap: wrap;*/
+    /*color:red;*/
     background-color: transparent;
-    text-align: center;
+    /*text-align: center;*/
+    align-items: center;
+    justify-content: center;
+
 }

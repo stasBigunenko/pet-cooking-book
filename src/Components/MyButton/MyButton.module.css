@@ -8,9 +8,7 @@
     border: 1px solid dodgerblue;
     cursor: pointer;
     font-weight: bold;
-    /*text-align: center;*/
     align-self: center;
-    /*align-items: center;*/
     justify-content: center;
     display: flex;
 }
