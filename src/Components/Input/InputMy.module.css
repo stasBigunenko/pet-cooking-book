@@ -1,8 +1,8 @@
 .inputMy {
-    /*width: 100%;*/
-    padding: 5px 15px;
-    margin: 5px 0;
+    /*width: auto;*/
+    /*padding: 5px 15px;*/
+    margin: 5px;
     border: 1px solid dodgerblue;
-    align-self: center;
+    /*align-self: center;*/
     background: white;
 }

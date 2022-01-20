@@ -148,13 +148,10 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             >
                 <strong style={{background: "white"}}>{dishById.title}</strong>
                 <p style={{background: "white"}}>{dishById.recipe}</p>
-                <span style={{background: "white"}}>
                     {photosById.length >0 && <Gallery
                         photos={photosById}
                         id ={dish.id}
                     />}
-                </span>
-
             </MyModal>
             {isAuth
                 ?
@@ -208,20 +205,20 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     <label style={{background: "white"}}>
                         Описание блюда:
                     </label>
-                    <InputMy
+                    <textarea
+                        style={{background: "white", width:"auto", border: "1px solid dodgerblue"}}
                         value={dishChange.description}
                         onChange={e => setDishChange({...dishChange, description: e.target.value})}
-                        type="text"
                         placeholder={dishChange.description}
                         required
                     />
                     <label style={{background: "white"}}>
                         Полный рецепт:
                     </label>
-                    <InputMy
+                    <textarea
+                        style={{background: "white", width:"auto", border: "1px solid dodgerblue"}}
                         value={dishChange.recipe}
                         onChange={e => setDishChange({...dishChange, recipe: e.target.value})}
-                        type="text"
                         placeholder={dishChange.recipe}
                         required
                     />
