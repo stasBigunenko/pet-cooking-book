@@ -3,4 +3,5 @@
     padding: 0;
     box-sizing: border-box;
     background-image: url('./Images/background/background.jpg');
+    justify-content: center;
 }

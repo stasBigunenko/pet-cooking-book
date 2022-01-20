@@ -39,8 +39,9 @@ const Login = () => {
 
     return (
         <div className={classes.log}>
-            <h1>Старница для логина</h1>
+            <h1 style={{textAlign:"center"}}>Старница для логина</h1>
             <form
+                style={{justifyContent:'center', alignItems:'center', alignSelf:"center"}}
                 onSubmit={(e) => {
                 login(e)
             }}>

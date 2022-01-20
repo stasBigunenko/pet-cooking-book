@@ -68,9 +68,11 @@ const AddRecipe = ({dishes, create}) => {
                     <button disabled={true}/>
                 )}
             <MyModal active={modalAddRecipe} setActive={setModalAddRecipe} >
-                <form onSubmit={(e) => {
-                    addNewRecipe(e)
-                    setModalAddRecipe(false)
+                <form
+                    style={{flexDirection:"column", background:"white", display:"flex", minWidth:"400px"}}
+                    onSubmit={(e) => {
+                        addNewRecipe(e)
+                        setModalAddRecipe(false)
                 }}>
                     <InputMy
                         value={dish.title}

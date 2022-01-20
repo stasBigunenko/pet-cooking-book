@@ -148,7 +148,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             >
                 <strong style={{background: "white"}}>{dishById.title}</strong>
                 <p style={{background: "white"}}>{dishById.recipe}</p>
-                <span>
+                <span style={{background: "white"}}>
                     {photosById.length >0 && <Gallery
                         photos={photosById}
                         id ={dish.id}
@@ -169,7 +169,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     <button disabled={true}/>
                 )}
             <MyModal active={modal2Active} setActive={setModal2Active} >
-                <form onSubmit={(e) =>{
+                <form style={{flexDirection:"column", background:"white", display:"flex", minWidth:"400px"}} onSubmit={(e) =>{
                     changeDishByID(e)
                     setModal2Active(false)
                 }}>
