@@ -80,21 +80,21 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
 
     // drag end handler to control the object over which dragged
     function dragEndHandler(e) {
-        e.target.style.background = 'white'
+        e.target.style.border = 'solid lightblue'
     }
 
     // dragover handler to control over which item is dragged handler
     function dragOverHandler (e) {
         // disable reloading of the page
         e.preventDefault()
-        e.target.style.background = 'lightgray'
+        e.target.style.border = 'solid 2px indianred'
     }
 
     // drop handler to control on which object is dropped dragged object
     async function dropHandler (e, dish) {
         // disable reloading of the page
         e.preventDefault()
-        e.target.style.background = 'white'
+        e.target.style.border = 'solid lightblue'
         // receiving the data from dragged object
         const drag = e.dataTransfer.getData("dishID")
         // finding needed objects to send to the db
@@ -123,15 +123,15 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         <div
             className={classes.card__content}
         >
-            <strong>{dish.title}</strong>
-            <li>
+            <strong style={{background: "white"}}>{dish.title}</strong>
+            <li style={{background: "white"}}>
                 Время приготовления - {dish.cookingTime} мин.
             </li>
-            <li>
+            <li style={{background: "white"}}>
                 Количество каллорий - {dish.calories} ккал.
             </li>
-            <strong>Описание</strong>
-            <p>
+            <strong style={{background: "white"}}>Описание</strong>
+            <p style={{background: "white"}}>
                 {dish.description}
             </p>
             <button
@@ -146,12 +146,15 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                 active={modalActive}
                 setActive={setModalActive}
             >
-                <strong>{dishById.title}</strong>
-                <p>{dishById.recipe}</p>
-                {photosById.length >0 && <Gallery
-                    photos={photosById}
-                    id ={dish.id}
-                />}
+                <strong style={{background: "white"}}>{dishById.title}</strong>
+                <p style={{background: "white"}}>{dishById.recipe}</p>
+                <span>
+                    {photosById.length >0 && <Gallery
+                        photos={photosById}
+                        id ={dish.id}
+                    />}
+                </span>
+
             </MyModal>
             {isAuth
                 ?
@@ -170,6 +173,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     changeDishByID(e)
                     setModal2Active(false)
                 }}>
+                    <label style={{background: "white"}}>
+                        Название блюда:
+                    </label>
                     <InputMy
                         value={dishChange.title}
                         onChange={e => setDishChange({...dishChange, title: e.target.value})}
@@ -177,6 +183,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         placeholder={dishChange.title}
                         required
                     />
+                    <label style={{background: "white"}}>
+                        Время приготовления:
+                    </label>
                     <InputMy
                         value={dishChange.cookingTime}
                         onChange={e => setDishChange({...dishChange, cookingTime: e.target.value})}
@@ -185,6 +194,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         placeholder={dishChange.cookingTime}
                         required
                     />
+                    <label style={{background: "white"}}>
+                        Количество каллорий:
+                    </label>
                     <InputMy
                         value={dishChange.calories}
                         onChange={e => setDishChange({...dishChange, calories: e.target.value})}
@@ -193,6 +205,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         placeholder={dishChange.calories}
                         required
                     />
+                    <label style={{background: "white"}}>
+                        Описание блюда:
+                    </label>
                     <InputMy
                         value={dishChange.description}
                         onChange={e => setDishChange({...dishChange, description: e.target.value})}
@@ -200,6 +215,9 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                         placeholder={dishChange.description}
                         required
                     />
+                    <label style={{background: "white"}}>
+                        Полный рецепт:
+                    </label>
                     <InputMy
                         value={dishChange.recipe}
                         onChange={e => setDishChange({...dishChange, recipe: e.target.value})}

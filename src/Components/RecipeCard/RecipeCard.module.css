@@ -10,34 +10,34 @@
     flex-basis: 30%;
     flex-direction: row;
     justify-content: center;
+    background: white;
 }
 
 .card:hover {
-    border: solid dodgerblue;
-    background-color: lightcyan;
+    border: solid 3px dodgerblue;
 }
 
 .card__content {
     justify-content: space-between ;
     padding: 15px;
+    background: white;
 }
 
 .card__img {
     height: 220px;
     width: 270px;
     justify-content: center;
-    /*overflow: hidden;*/
 }
 .card__img:hover {
-    transform: scale(1.2);
-    transition-duration: 0.5s;
+    transform: scale(2.0);
+    transition-duration: 0.8s;
 }
 
 .card__btn {
     padding: 15px 15px;
     color: dodgerblue;
     font-size: 14px;
-    background: transparent;
+    background: white;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
@@ -60,7 +60,7 @@
     padding: 15px 15px;
     color: red;
     font-size: 14px;
-    background: transparent;
+    background: white;
     border-radius: 1px;
     cursor: pointer;
     font-weight: bold;

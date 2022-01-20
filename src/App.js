@@ -1,6 +1,6 @@
 import './App.css'
 import * as React from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import AppRouter from "./Components/AppRouter/AppRouter.js";
 import {AuthContext} from "./Components/Context/AuthContext.js";
 import {useEffect, useState} from "react";

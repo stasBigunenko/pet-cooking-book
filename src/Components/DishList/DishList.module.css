@@ -1,5 +1,5 @@
 .dishlist {
-    border: 1px solid teal;
+    /*border: 1px solid teal;*/
     display: flex;
     justify-content: center;
 }

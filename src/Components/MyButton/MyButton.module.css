@@ -3,9 +3,9 @@
     padding: 15px 15px;
     color: dodgerblue;
     font-size: 14px;
-    background: transparent;
+    background: white;
     border-radius: 1px;
-    border: 1px solid blue;
+    border: 1px solid dodgerblue;
     cursor: pointer;
     font-weight: bold;
     /*text-align: center;*/
@@ -16,7 +16,7 @@
 }
 
 .myBtn:hover {
-    border: 2px solid royalblue;
+    border: 2px solid dodgerblue;
     background-color: dodgerblue;
     color: white;
     transition-duration: 0.5s;
