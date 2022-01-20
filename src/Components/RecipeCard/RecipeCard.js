@@ -221,6 +221,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                     <button disabled={true}/>
                 )}
             <Comments
+                // style={{marginRight:"100px"}}
                 dishID={dish.id}
             />
             <LikeButton dish={dish} />
