@@ -35,6 +35,7 @@ const Registration = () => {
             <h1>Старница для регистрации</h1>
             <form
                 className={classes.reg}
+                style={{marginTop:"5px"}}
                 onSubmit={(e) => {
                 register(e)
             }}>

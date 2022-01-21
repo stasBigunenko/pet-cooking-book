@@ -42,6 +42,7 @@ const Login = () => {
             <h1 style={{textAlign:"center", color:"dodgeblue"}}>Старница для логина</h1>
             <form
                 className={classes.log}
+                style={{marginTop:"5px"}}
                 onSubmit={(e) => {
                 login(e)
             }}>
@@ -69,6 +70,7 @@ const Login = () => {
             <h2 style={{color:"red"}}>
                 Еще не зарегистрированы?
                 <MyButton
+                    style={{marginLeft:"90px"}}
                     onClick={() => {
                         router.push(`/registration`)
                     }}
