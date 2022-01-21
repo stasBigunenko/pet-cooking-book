@@ -66,9 +66,12 @@ const LikeButton = ({dish}) => {
                 ):(
                     <button disabled={true}/>
                 )}
+
             <p
-                style={{color:"dodgerblue", background:"white", fontWeight: "bold"}}
-            >Likes: {likes.likes}</p>
+                style={{color:"dodgerblue", background:"white", fontWeight: "bold", margin:"3px"}}
+            >
+                <img style={{width:"13px", background:"white", marginRight:"2px"}} src={require('../../Images/Likes/likeHeart.png')}/>
+                {likes.likes}</p>
         </div>
     );
 };
