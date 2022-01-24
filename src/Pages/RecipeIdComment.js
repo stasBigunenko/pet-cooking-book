@@ -30,7 +30,7 @@ const RecipeIdComment = () => {
         setComments(comments)
     }
 
-    // Function taht add a new comment to the db
+    // Function that add a new comment to the db
     async function createComment(e) {
         e.preventDefault()
         const newComments = await DishesService.createComment(author, commentBody, comments, params.id)
@@ -40,18 +40,12 @@ const RecipeIdComment = () => {
     return (
         <div >
             <form
+                style={{justifyContent:'center', alignContent:'center', display:'flex', flexDirection:'column', alignItems:'center'}}
                 onSubmit={e => {
                     createComment(e)
                     setCommentBody('')
                     setCommentAuthor('')
                 }}>
-                {/*<input*/}
-                {/*    style={{marginBottom:"12px", justifySelf:"center", margin:"12px"}}*/}
-                {/*    placeholder='Ваше имя'*/}
-                {/*    value={commentAuthor}*/}
-                {/*    onChange={e => setCommentAuthor(e.target.value)}*/}
-                {/*    required={true}*/}
-                {/*/>*/}
                 <textarea
                     style={{display:'flex', width:"670px", height:"100px", justifyContent:'center', alignContent:'center', background: "white"}}
                     placeholder='Оставьте свой комментарий здесь...'
