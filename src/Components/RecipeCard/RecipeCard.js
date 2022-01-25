@@ -147,12 +147,14 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
             <MyModal
                 active={modalActive}
                 setActive={setModalActive}
+                style={{background: "white"}}
             >
                 <strong style={{background: "white"}}>{dishById.title}</strong>
                 <p style={{background: "white"}}>{dishById.recipe}</p>
                     {photosById.length >0 && <Gallery
                         photos={photosById}
                         id ={dish.id}
+                        style={{background: "white"}}
                     />}
             </MyModal>
             {isAuth

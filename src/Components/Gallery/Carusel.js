@@ -14,7 +14,13 @@ const Gallery = ({photos, id}) => {
                 >
                     {photos.map(photo => (
                         <Carousel.Item key={photo} >
-                            <img width="40%" src={require("../../Images/Carousel/"+id+"/"+photo)} alt="" />
+                            <div style={{display:"flex", justifyContent:"center", textAlign: "center"}}>
+                            <img
+                                width="40%"
+                                src={require("../../Images/Carousel/"+id+"/"+photo)}
+                                alt=""
+                            />
+                            </div>
                         </Carousel.Item>
                     ))}
                 </Carousel>
