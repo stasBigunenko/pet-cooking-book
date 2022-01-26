@@ -150,7 +150,11 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                 style={{background: "white"}}
             >
                 <strong style={{background: "white"}}>{dishById.title}</strong>
-                <p style={{background: "white"}}>{dishById.recipe}</p>
+                <p
+                    style={{background: "white"}}
+                >
+                    {dishById.recipe}
+                </p>
                     {photosById.length >0 && <Gallery
                         photos={photosById}
                         id ={dish.id}
