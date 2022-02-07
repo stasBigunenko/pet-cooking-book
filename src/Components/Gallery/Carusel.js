@@ -17,7 +17,11 @@ const Gallery = ({photos, id}) => {
                             <div style={{display:"flex", justifyContent:"center", textAlign: "center"}}>
                             <img
                                 width="40%"
-                                src={require("../../Images/Carousel/"+id+"/"+photo)}
+                                // Uncomment if you work with J-SON server
+                                // src={require("../../Images/Carousel/"+id+"/"+photo)}
+
+                                //Uncomment if you work with golang rest server
+                                src={require("../../Images/Carousel/"+photo)}
                                 alt=""
                             />
                             </div>

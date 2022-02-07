@@ -11,6 +11,7 @@ import {AuthContext} from "../Context/AuthContext.js";
 
 // Component with the main functions and hooks
 const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
+
     // Hook to control the state of the modal window for the "Полный рецепт"
     const [modalActive, setModalActive] = useState(false)
     // Hook to control the state of the modal window for the "Редактировать рецепт"
@@ -38,15 +39,19 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         const dishById = await DishesService.getDishByID(dish.id)
         // Changed the state of the hook
         setDishById(dishById)
+
+        // Comment if you work with J-SON server, uncomment if you work with golang server
+        setPhotosById(dishById.photos)
     }
 
+    // Uncomment if you work with J-SON server, comment if you work with golang server
     // Function to receive data from db from the 3d table (photos for carousel)
-    async function fetchPhotosById() {
-        // created new variable to receive the data from the function
-        const photosById = await DishesService.getPhotosByID(dish.id)
-        // Changed the state of the hook
-        setPhotosById(photosById)
-    }
+    // async function fetchPhotosById() {
+    //     // created new variable to receive the data from the function
+    //     const photosById = await DishesService.getPhotosByID(dish.id)
+    //     // Changed the state of the hook
+    //     setPhotosById(photosById)
+    // }
 
     // Function to delete the recipe by id from db
     async function deleteDishById() {
@@ -141,7 +146,8 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
                 onClick={() => {
                     setModalActive(true)
                     fetchDishById()
-                    fetchPhotosById()
+                    // Uncomment if you work with J-SON server, comment if you work with golang server
+                    // fetchPhotosById()
                 }}
             >Полный рецепт</button>
             <MyModal
