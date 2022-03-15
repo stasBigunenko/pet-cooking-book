@@ -32,7 +32,7 @@ const AddRecipe = ({dishes, create}) => {
         // add needed data to the new object
         const newRecipe = {
             id: newDish.id,
-            order: newDish.orderNum,
+            orderNum: newDish.orderNum,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,

@@ -28,6 +28,7 @@ const Registration = () => {
 
         await DishesService.createUser(user)
         alert('Вы успешно зарегистрировались')
+        router.push(`/login`)
     }
 
     return (

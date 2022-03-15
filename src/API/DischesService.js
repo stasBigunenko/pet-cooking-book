@@ -222,14 +222,15 @@ export default class DishesService {
 
     // Method that create receipt in the 1st and 2d db
     static async createNewDish(dish, dishes) {
-        dish.order = Math.max.apply(Math, dishes.map(function(d) { return d.order; })) + 1
+        dish.orderNum = Math.max.apply(Math, dishes.map(function(d) { return d.orderNum; })) + 1
         dish.likes = 0
         dish.url = "none.png"
         dish.photos = []
         let intCookingTime = Number(dish.cookingTime)
         let intCalories = Number(dish.calories)
+        let intOrder = Number(dish.orderNum)
         const response = await axios.post(`http://localhost:8082/create/recipe`, {
-            orderNum: dish.order,
+            orderNum: intOrder,
             title: dish.title,
             cookingTime: intCookingTime,
             calories: intCalories,
@@ -255,108 +256,84 @@ export default class DishesService {
         const response = await axios.get('http://localhost:8082/recipes/' + id)
         return {
             id: response.data.id,
-            order:response.data.orderNum,
+            orderNum:response.data.orderNum,
             title: response.data.title,
             cookingTime: response.data.cookingTime,
             calories: response.data.calories,
             description: response.data.description,
             url: response.data.url,
             likes: response.data.likes,
-            recipe: response.data.recipe
+            recipe: response.data.recipe,
+            photos: response.data.photos
         };
     }
 
     // Method that insert data to the db
     static async putDishByID(changeDish) {
-        const response = await axios.patch('http://localhost:8082/recipes/' + changeDish.id, {
+        let intCookingTime = Number(changeDish.cookingTime)
+        let intCalories = Number(changeDish.calories)
+        const response = await axios.put('http://localhost:8082/recipes/update/' + changeDish.id, {
             id: changeDish.id,
             orderNum: changeDish.order,
             title: changeDish.title,
-            cookingTime: changeDish.cookingTime,
-            calories: changeDish.calories,
+            cookingTime: intCookingTime,
+            calories: intCalories,
             description: changeDish.description,
             url: changeDish.url,
             likes: changeDish.likes,
-            recipe: changeDish.recipe
+            recipe: changeDish.recipe,
+            photos: changeDish.photos
         })
 
         return response.data;
     }
 
     static async likesByID(likes) {
-        const response = await axios.put('http://localhost:3004/dishes/' + likes.id, {
+        await axios.put('http://localhost:8082/recipes/likes/' + likes.id, {
             id: likes.id,
-            order: likes.order,
-            title: likes.title,
-            cookingTime: likes.cookingTime,
-            calories: likes.calories,
-            description: likes.description,
-            url: likes.url,
             likes: likes.likes
-        })
+        }, )
+        return
     }
 
     // Method that swap orders in the db
     static async swapRecipes(dish1, dish2) {
-        const response1 = await axios.put('http://localhost:3004/dishes/' + dish1.id, {
-            id: dish1.id,
-            order: dish2.order,
-            title: dish1.title,
-            cookingTime: dish1.cookingTime,
-            calories: dish1.calories,
-            description: dish1.description,
-            url: dish1.url,
-            likes: dish1.likes
+        let intOrderNum1 = Number(dish1.orderNum)
+        let intOrderNum2 = Number(dish2.orderNum)
+        await axios.put('http://localhost:8082/recipes/swap', {
+            id1: dish1.id,
+            id2: dish2.id,
+            orderNum1: intOrderNum1,
+            orderNum2: intOrderNum2
         })
-        const response2 = await axios.put('http://localhost:3004/dishes/' + dish2.id, {
-            id: dish2.id,
-            order: dish1.order,
-            title: dish2.title,
-            cookingTime: dish2.cookingTime,
-            calories: dish2.calories,
-            description: dish2.description,
-            url: dish2.url,
-            likes: dish2.likes
-        })
-
-        return [response1.data, response2.data];
     }
 
     // Method that receive all the comments from the db
     static async getAllComments(dishID) {
-        const response = await axios.get('http://localhost:3004/comments/' + dishID)
-        return response.data.comm
+        const response = await axios.get('http://localhost:8082/comments/' + dishID)
+        return response.data
     }
 
     // Method that create new comment in db
     static async createComment(author, commentBody, comments, dishID) {
-        const comment = {}
-        if (comments.length == 0) {
-            comment.commentID = dishID + 0.1
-        } else {
-            comment.commentID = Math.max.apply(Math, comments.map(function(c) { return c.commentID; })) + 0.1
-        }
-        comment.author = author
-        comment.body = commentBody
-        const newComms = [...comments, comment]
-        await axios.put('http://localhost:3004/comments/' + dishID, {
-            id: dishID,
-            comm: newComms
+        const response = await axios.post('http://localhost:8082/create/comment/' + dishID, {
+            recipeID: dishID,
+            author: author,
+            comment: commentBody,
         })
+        const newComms = [...comments, response.data]
         return newComms
     }
 
     // Method that receiving all users from db
     static async findUser(){
-        const response = await axios.get('http://localhost:3004/users')
+        const response = await axios.get('http://localhost:8082/users')
         return response.data
 
     }
     // Method that create new user in db
     static async createUser(user) {
-        const users = await axios.get('http://localhost:3004/users')
-        user.id = Math.max.apply(Math, users.data.map(function(u) { return u.id; })) + 1
-        await axios.post(`http://localhost:3004/users`, {
+        await axios.post(`http://localhost:8082/create/user`, {
             id: user.id,
             name: user.name,
             email: user.email,

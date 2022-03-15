@@ -67,7 +67,7 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         // add needed data to the new object
         const newRecipe= {
             id: newDish.id,
-            order: newDish.order,
+            orderNum: newDish.orderNum,
             title: newDish.title,
             cookingTime: newDish.cookingTime,
             calories: newDish.calories,
@@ -105,12 +105,12 @@ const RecipeCard = ({dish, remove, change, dnd, dishes}) => {
         // receiving the data from dragged object
         const drag = e.dataTransfer.getData("dishID")
         // finding needed objects to send to the db
-        const dragged = dishes.find(d => d.id === Number(drag))
+        const dragged = dishes.find(d => d.id === String(drag))
         const dropped = dishes.find(d => d.id === dish.id)
         // changing orders of the object in db
         await DishesService.swapRecipes(dragged, dropped)
         // finding needed indexes
-        let indexDragged = dishes.findIndex(d => d.id === Number(drag))
+        let indexDragged = dishes.findIndex(d => d.id === String(drag))
         let indexDropped = dishes.findIndex(d => d.id === dish.id);
         // returning to the parent component data
         dnd(indexDragged, indexDropped)

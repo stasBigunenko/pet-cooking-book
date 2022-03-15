@@ -61,7 +61,7 @@ function Recipes () {
 
     // Sort function for the swapped receipts
     const sortRecipes = (a, b) => {
-        if (a.order > b.order) {
+        if (a.orderNum > b.orderNum) {
             return 1
         } else {
             return -1
@@ -71,9 +71,9 @@ function Recipes () {
     // Callback function for drag and drop functionality
     const dnd = (indexDragged, indexDropped) => {
         // swapping object's order
-        let buff = dishes[indexDragged].order
-        dishes[indexDragged].order = dishes[indexDropped].order
-        dishes[indexDropped].order = buff
+        let buff = dishes[indexDragged].orderNum
+        dishes[indexDragged].orderNum = dishes[indexDropped].orderNum
+        dishes[indexDropped].orderNum = buff
         // creating a new array with the changed orders
         const swappedArray = dishes.sort(sortRecipes).map(dish => {
             return dish

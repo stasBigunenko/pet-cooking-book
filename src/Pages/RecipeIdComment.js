@@ -14,8 +14,6 @@ const RecipeIdComment = () => {
     const [comments, setComments] = useState([])
     //Hook for controlling the state of the comment body
     const [commentBody, setCommentBody] = useState('')
-    //Hook for controlling the state of the author comment
-    const [commentAuthor, setCommentAuthor] = useState('')
 
     const {author} = useContext(AuthContext)
 
@@ -27,7 +25,11 @@ const RecipeIdComment = () => {
     // Function to receive all comments from the db
     async function fetchComments() {
         const comments = await DishesService.getAllComments(params.id)
-        setComments(comments)
+        if (comments.length === 0) {
+            setComments([])
+        }else{
+            setComments(comments)
+        }
     }
 
     // Function that add a new comment to the db
@@ -44,7 +46,6 @@ const RecipeIdComment = () => {
                 onSubmit={e => {
                     createComment(e)
                     setCommentBody('')
-                    setCommentAuthor('')
                 }}>
                 <textarea
                     style={{display:'flex', width:"670px", height:"100px", justifyContent:'center', alignContent:'center', background: "white"}}

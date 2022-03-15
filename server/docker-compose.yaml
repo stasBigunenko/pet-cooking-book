@@ -1,0 +1,34 @@
+version: "3.1"
+
+services:
+  http_recipe_api:
+    container_name: "http_recipe_API"
+    build:
+      context: "./"
+      dockerfile: "./docker/http.Dockerfile"
+    ports:
+      - "8082:8082"
+    environment:
+      PORT_HTTP: ":8082"
+      POSTGRES_HOST: "postgres_recipe"
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: "postgres_recipe"
+      POSTGRES_PASSWORD: "qwerty"
+      POSTGRES_DB: "recipedb"
+      POSTGRES_SSL: "disable"
+#    depends_on:
+#        - "postgres"
+
+  postgres_recipe:
+    container_name: "postgres_recipe"
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres_recipe"
+      POSTGRES_PASSWORD: "qwerty"
+      POSTGRES_DB: "recipedb"
+    volumes:
+      - ./pkg/storage/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./pkg/storage/dbdata/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
